@@ -9,6 +9,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { AboutComponent } from './shared/about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MaterialModule } from './material.module';
+import { SettingsComponent} from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MaterialModule } from './material.module';
     HeaderComponent,
     FooterComponent,
     AboutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
