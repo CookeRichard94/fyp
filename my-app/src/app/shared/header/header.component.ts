@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BackendService} from './../../services/backend.service'
 
 @Component({
   selector: 'app-header',
@@ -11,9 +12,21 @@ export class HeaderComponent implements OnInit {
   @Input() iconTitle: string;
 
   counter = 0;
-  constructor() { }
+  UserStatusColour = "warn";
+  constructor(private backendservice: BackendService) { }
 
   ngOnInit(): void {
+    this.counter = 0;
+    this.counter = this.backendservice.getCartTotal().subscribe(
+      (res) => {
+        this.counter = res;
+      }
+    );
+    this.backendservice.getUserStatus().subscribe(
+      (res) => {
+        this.UserStatusColour =res ? "accent" : "warn";
+      }
+    );
   }
 
 }

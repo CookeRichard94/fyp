@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<nav class="navbar navbar-dark bg-primary">
     <button mat-mini-fab color="warn" >
       <mat-icon>dashboard</mat-icon>
     </button>
@@ -7,9 +7,14 @@
     <span class="example-icon"></span>
     <span class="navbar-brand mb-0 h1">{{pageTitle}}</span>
     <span class="example-spacer"></span>
-    <mat-icon matBadge="{{counter}}" matBadgeColor="warn">shopping_cart</mat-icon>
-    <button routerLink="/about"><mat-icon>info</mat-icon> </button>
-    <button routerLink="/settings"><mat-icon>settings</mat-icon> </button>
-
-    
-</mat-toolbar>
+    <mat-icon [color]="UserStatusColour">account_box</mat-icon>
+    <span class="example-icon"></span>
+    <mat-icon matBadge="{{counter}}" matBadgeColor="warn" matBadgePosition="before">shopping_cart</mat-icon>
+    <span class="nav-icon"></span>
+    <button routerLink="/about">
+      <mat-icon>info</mat-icon> 
+    </button>
+    <button routerLink="/settings">
+      <mat-icon>settings</mat-icon>
+    </button>
+  </nav>

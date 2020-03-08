@@ -10,6 +10,7 @@ import { AboutComponent } from './shared/about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MaterialModule } from './material.module';
 import { SettingsComponent} from './settings/settings.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SettingsComponent} from './settings/settings.component';
     FooterComponent,
     AboutComponent,
     NotFoundComponent,
-    SettingsComponent
+    SettingsComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
