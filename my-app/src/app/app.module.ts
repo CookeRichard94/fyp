@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MaterialModule } from './material.module';
 import { SettingsComponent} from './settings/settings.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { SetproductComponent } from './admin/setproduct/setproduct.component';
+
 
 @NgModule({
   declarations: [
@@ -20,13 +23,17 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     AboutComponent,
     NotFoundComponent,
     SettingsComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    SetproductComponent
+
   ],
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

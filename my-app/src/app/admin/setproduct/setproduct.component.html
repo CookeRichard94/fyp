@@ -1,0 +1,24 @@
+<app-header pageTitle = "SetProducts" iconTitle = "info"></app-header>
+<mat-card>
+    <mat-card-content>
+        <div ngif="(togglefield == 'searchMode') else (togglefield == 'addMode')? showAddMode : ((togglefield == 'editMode')? showEditMode: showResMode)">
+            <!--search-->
+            <form #searchFormData="ngForm" class="example-form">
+                <mat-form-field class="example-form">
+                    <input matInput type="text" placeholder="Category" id="category" name="category" #category="ngModel" ngModel
+                    minlength="3" maxlength="50">
+                </mat-form-field>
+
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>
+<ng-template #showAddMode>
+    <!--add-->
+</ng-template>
+<ng-template #showEditMode>
+    <!--Edit-->
+</ng-template>
+<ng-template #showResMode>
+    <!--results-->
+</ng-template>
