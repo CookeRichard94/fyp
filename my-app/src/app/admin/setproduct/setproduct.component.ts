@@ -7,17 +7,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SetproductComponent implements OnInit {
 
-  togglefield: String; 
+  toggleField: String; 
+  savedChanges = false;
+  
+
   constructor() { }
 
   ngOnInit(): void {
-    this.togglefield = "searchMode";
+    this.toggleField = "searchMode";
   }
 
   toggle(filter?) {
     if(!filter) {filter = "searchMode"}
     else {filter = filter;}
-    this.togglefield = filter;
+    this.toggleField = filter;
   }
 
+  getData()
+  {
+
+  }
+
+  updateDate()
+  {
+
+  }
+
+  
 }
