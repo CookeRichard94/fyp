@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { BackendService} from '../../Services/backend.service';
 
 
 @Component({
@@ -19,19 +20,23 @@ export class SetproductComponent implements OnInit {
   private querySubscription;
   dataSource: MatTableDataSource<any>;
   members: any[];
+  myDocId;
+  myDocData;
+  takeHostSelfie = false;
+  showHostSelfie = false;
   
   displayedColumns = ['category', 'scategory', 'name', 'price', '_id'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private backendService) { }
+  constructor(private backendService: BackendService) { }
 
   ngOnInit(): void {
     this.toggleField = "searchMode";
+    this.dataSource = new MatTableDataSource(this.members);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.dataSource = new MatTableDataSource(this.members);
   }
 
   toggle(filter?) {
@@ -49,10 +54,23 @@ export class SetproductComponent implements OnInit {
           this.dataSource = new MatTableDataSource(members);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
-        });
-}
+        },
+        (error) => {
+          this.error  =true;
+          this.errorMessage = error.message;
+          this.dataLoading = false;
+        },
+        () =>{this.error =false; this.dataLoading = false;}
+        );
+  }
 
-  updateDate()
+  setData(formData)
+  {
+
+  }
+        
+
+  updateData(dataForm)
   {
 
   }
@@ -65,6 +83,32 @@ export class SetproductComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  getFilterData(filters)
+  {
+
+  }
+
+  getDoc(docId)
+  {
+
+  }
+
+  deleteDoc(docId)
+  {
+
+  }
+
+  getPic(picId)
+  {
+
+  }
+
+  deleteProductPic(docId)
+  {
+
+  }
+
 
   
 }
