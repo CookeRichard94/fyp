@@ -30,7 +30,7 @@ export class SetproductComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private backendService: BackendService) { }
+  constructor(private backend_Service: BackendService) { }
 
   ngOnInit(): void {
     this.toggleField = "searchMode";
@@ -48,7 +48,7 @@ export class SetproductComponent implements OnInit {
   getData()
   {
     this.dataLoading = true;
-      this.querySubscription = this.backendService.getProducts('product')
+      this.querySubscription = this.backend_Service.getProducts('product')
         .subscribe(members => {
           this.members = members;
           this.dataSource = new MatTableDataSource(members);
@@ -70,7 +70,7 @@ export class SetproductComponent implements OnInit {
   }
         
 
-  updateData(dataForm)
+  updateData(formData)
   {
 
   }

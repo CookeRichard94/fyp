@@ -4,7 +4,7 @@
             <div *ngIf="(toggleField=='searchMode') else (toggleField=='addMode')? showAddMode : ((toggleField=='editMode')? showEditMode : showResMode)">
             <!--search-->
             <form #searchFormData="ngForm" class="example-form">
-                <mat-card-action>
+                <mat-card-actions>
                     <button type="button" (click)="toggle('resMode');getFilterData(searchFormData.value);" 
                     mat-raised-button [disabled]="!searchFormData.valid" color="primary">Search</button>
                     <span class="example-form"></span>
@@ -15,7 +15,7 @@
                     <span matTooltip="Show Results">
                         <mat-icon color="primary" (click)="toggle('resMode');getData;">cached</mat-icon>
                     </span>
-                </mat-card-action>
+                </mat-card-actions>
                 <br>
                 <mat-form-field class="example-form">
                     <input matInput type="text" placeholder="Category" id="category" name="category" #category="ngModel" ngModel
@@ -123,13 +123,13 @@
         <mat-error *ngif="savedChanges">
             data saved
             <label class="small-spacer"></label>
-            <mat-icon (click)="this.addDataForm.reset();savedChanges=false;toggle('searchMode');">clear</mat-icon>
+            <mat-icon (click)="this.editDataForm.reset();savedChanges=false;toggle('searchMode');">clear</mat-icon>
 
         </mat-error>
         <div *ngIf="!savedChanges">
             <mat-card-actions align="start">
-                <button type="submit" mat-raised-button [disabled]="!addDataForm.valid" color="primary">Add</button>
-                <button type="reset" (click)="this.addDataForm.reset();" mat-raised-button [disabled]="!addDataForm.valid" color="primary">Clear</button>
+                <button type="submit" mat-raised-button [disabled]="!editDataForm.valid" color="primary">Add</button>
+                <button type="reset" (click)="this.editDataForm.reset();" mat-raised-button [disabled]="!editDataForm.valid" color="primary">Clear</button>
                 <span class="med-spacer"></span>
                 <span matTooltip="Search">
                     <mat-icon color="primary" (click)="toggle('searchMode')">search</mat-icon>
