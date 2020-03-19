@@ -1,0 +1,9 @@
+.mat-success {
+    background-color: rgb(20, 187, 20);
+    color: #fff;
+}
+
+.mat-warn {
+    background-color: red;
+    color: #fff;
+}

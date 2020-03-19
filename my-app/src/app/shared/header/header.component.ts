@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
     );
     this.backendservice.getUserStatus().subscribe(
       (res) => {
-        this.UserStatusColour =res ? "accent" : "warn";
+        this.UserStatusColour =res ? "success" : "war";
       }
     );
   }

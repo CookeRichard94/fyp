@@ -20,7 +20,7 @@ export class BackendService {
   }
 
   getUserStatus(){
-    let fakeresponse = "true";
+    let fakeresponse = true;
     return Observable.create(
       observer => {
         setTimeout(() =>{
@@ -65,7 +65,7 @@ let fakeresponse = [{
 
 setProducts(colltype, formData)
 {
-  let fakeresponse = "true";
+  let fakeresponse = true;
     return Observable.create(
       observer => {
         setTimeout(() =>{
@@ -77,7 +77,35 @@ setProducts(colltype, formData)
 
 updateProducts(collType, formData)
 {
-  let fakeresponse = "true";
+  let fakeresponse = true;
+    return Observable.create(
+      observer => {
+        setTimeout(() =>{
+          observer.next(fakeresponse)
+        },2000)
+      }
+    )
+}
+
+getProductDoc(collType, id){
+  let fakeresponse = {
+    'category': "test",
+    'scategory': "test",
+    'name': "test",
+    'price': "500",
+    '_id': "123",
+  };
+  return Observable.create(
+    observer => {
+      setTimeout(() =>{
+        observer.next(fakeresponse)
+      },2000)
+    }
+  )
+}
+
+deleteProductDoc(collType, id){
+  let fakeresponse = true;
     return Observable.create(
       observer => {
         setTimeout(() =>{
