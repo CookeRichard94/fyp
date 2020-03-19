@@ -10,3 +10,7 @@ table {
 td, th{
     width: 25%;
 }
+
+.mat-success {
+    color: rgb(132, 204, 23);
+}
