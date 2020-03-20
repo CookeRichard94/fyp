@@ -13,6 +13,10 @@ import { MaterialModule } from './material.module';
 import { SettingsComponent} from './settings/settings.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { SetproductComponent } from './admin/setproduct/setproduct.component';
+import { AdmintabComponent } from './admin/admintab/admintab.component';
+import { AdminordersComponent } from './admin/adminorders/adminorders.component';
+import { AdminusersComponent } from './admin/adminusers/adminusers.component';
+import { AdmincartsComponent } from './admin/admincarts/admincarts.component';
 
 
 @NgModule({
@@ -24,7 +28,11 @@ import { SetproductComponent } from './admin/setproduct/setproduct.component';
     NotFoundComponent,
     SettingsComponent,
     ShoppingCartComponent,
-    SetproductComponent
+    SetproductComponent,
+    AdmintabComponent,
+    AdminordersComponent,
+    AdminusersComponent,
+    AdmincartsComponent
 
   ],
   imports: [
