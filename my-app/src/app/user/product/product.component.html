@@ -18,7 +18,8 @@
     </mat-card-actions>
     <mat-card-content *ngIf="toggle else showProductDetails">
         <mat-list>
-            <mat-list-item *ngFor="let item of members | async" (click)="showDetails(item);toggle=!toggle">
+            <!--<mat-list-item *ngFor="let item of members | async" (click)="showDetails(item);toggle=!toggle">-->
+            <mat-list-item *ngFor="let item of members" (click)="showDetails(item);toggle=!toggle">
                 <h4 mat-line>
                     {{item.name}}
                     <mat-icon mat-list-icon>pageview</mat-icon>
@@ -48,12 +49,12 @@
         </mat-error>
 
         <br/>
-        <mat-icon (click)="countProd('remove')" color="warn">remove</mat-icon>
+        <mat-icon (click)="countProducts('remove')" color="warn">remove</mat-icon>
         {{ counter }}
-        <mat-icon (click)="countProd('add')" color="success">add</mat-icon>
+        <mat-icon (click)="countProducts('add')" color="success">add</mat-icon>
         <span class="med-spacer"></span>
         <button [disabled]="counter < 1" mat-raised-button color="accent" (click)="addToCart(myDocData, counter)">Add to Cart</button>
         <br/>
-        <img [src]="profileUrl | async" width="300" height="300" /> 
+        <!--<img [src]="profileUrl | async" width="300" height="300" /> -->
     </ng-template>
 </mat-card>

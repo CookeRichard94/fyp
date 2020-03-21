@@ -63,7 +63,7 @@ let fakeresponse = [{
   )
 }
 
-setProducts(colltype, formData)
+setProducts(collType, formData)
 {
   let fakeresponse = true;
     return Observable.create(
@@ -114,4 +114,28 @@ deleteProductDoc(collType, id){
       }
     )
 }
+
+updateShopping(collType, data){
+  let fakeresponse = true;
+  return Observable.create(
+    observer => {
+      setTimeout(() =>{
+        observer.next(fakeresponse)
+      },2000)
+    }
+  )
+}
+
+updateShoppingCart(collType, data){
+  let fakeresponse = true;
+  return Observable.create(
+    observer => {
+      setTimeout(() =>{
+        observer.next(fakeresponse)
+      },2000)
+    }
+  )
+}
+
+
 }
