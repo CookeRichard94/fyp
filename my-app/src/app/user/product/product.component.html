@@ -29,6 +29,31 @@
 
     </mat-card-content>
     <ng-template #showProductDetails>
+        <b>{{ myDocData.name }}</b>
+        <span class="small-spacer"></span>
+        <span matTooltip="Show All Products">
+            <mat-icon color="primary" (click)="toggle=!toggle">backspace</mat-icon>
+        </span>
+        <p class="label-go" mat-line> {{myDocData.sname }}  {{myDocData.lname }}</p>
+        <p class="label-hint" mat-line> {{myDocData.descr }}</p>
+        <p class="label-go" mat-line> Color: {{myDocData.color }} Size: {{myDocData.size }} Price: {{myDocData.price }} </p>
+        <p class="label-error" mat-line> Shipping: {{myDocData.shipping }} Discount: {{myDocData.discount }} </p>
 
+        <mat-error *ngIf="savedChanges">
+            <br/>
+            <br/> Shopping cart is updated.
+            <mat-icon (click)="savedChanges=!savedChanges" color="accent">close</mat-icon>
+            <span class="med-spacer"></span>
+            <br/>
+        </mat-error>
+
+        <br/>
+        <mat-icon (click)="countProd('remove')" color="warn">remove</mat-icon>
+        {{ counter }}
+        <mat-icon (click)="countProd('add')" color="success">add</mat-icon>
+        <span class="med-spacer"></span>
+        <button [disabled]="counter < 1" mat-raised-button color="accent" (click)="addToCart(myDocData, counter)">Add to Cart</button>
+        <br/>
+        <img [src]="profileUrl | async" width="300" height="300" /> 
     </ng-template>
 </mat-card>
