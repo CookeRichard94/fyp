@@ -24,18 +24,6 @@
                     minlength="3" maxlength="50">
                 </mat-form-field>
                 <br>
-                <mat-form-field class="example-form">
-                    <input matInput [matDatepicker]="pickerfromdt" placeholder="From Date" id="fromdt" name="fromdt" #fromdt="ngModel" ngModel>
-                    <mat-datepicker-toggle matSuffix [for]="pickerfromdt"></mat-datepicker-toggle>
-                    <mat-datepicker #pickerfromdt></mat-datepicker>
-                </mat-form-field>
-                <br>
-                <mat-form-field class="example-form">
-                    <input matInput [matDatepicker]="pickertodt" placeholder="To Date" id="todt" name="todt" #todt="ngModel" ngModel>
-                    <mat-datepicker-toggle matSuffix [for]="pickertodt"></mat-datepicker-toggle>
-                    <mat-datepicker #pickertodt></mat-datepicker>
-                </mat-form-field>
-
             </form>
         </div>
     </mat-card-content>
@@ -159,14 +147,6 @@
             <ng-container matColumnDef="_id">
                 <mat-header-cell *matHeaderCellDef> action </mat-header-cell>
                 <mat-cell *matCellDef="let row">
-                        <button mat-icon-button matTooltip="Show Picture" *ngIf="row.path" (click)="getPic(row.path);this.showHostSelfie=true;">
-                            <mat-icon color="primary">photo_camera</mat-icon>
-                        </button>
-                        <button mat-icon-button matTooltip="Remove Picture" *ngIf="row.path" (click)="deleteProductPic(row._id);this.showHostSelfie=false;">
-                            <mat-icon color="primary">camera_roll</mat-icon>
-                        </button>
-                        <button mat-icon-button matTooltip="Take Picture" (click)="this.myDocId=row._id;this.takeHostSelfie=true;" class="label-error"
-                            *ngIf="!row.path" class="label-error"><mat-icon>camera_roll</mat-icon></button>
                     <span matTooltip="Edit">
                         <button mat-icon-button (click)="getDoc(row._id)">
                             <mat-icon color="success">edit</mat-icon>
