@@ -8,9 +8,6 @@
                     <button type="button" (click)="toggle('resMode');getFilterData(searchFormData.value);" 
                     mat-raised-button [disabled]="!searchFormData.valid" color="primary">Search</button>
                     <span class="example-form"></span>
-                    <span matTooltip="Add New">
-                        <mat-icon color="primary" (click)="toggle('addMode');">add</mat-icon>
-                    </span>
                     <span class="example-form"></span>
                     <span matTooltip="Show Results">
                         <mat-icon color="primary" (click)="toggle('resMode');getData;">cached</mat-icon>
@@ -18,7 +15,7 @@
                 </mat-card-actions>
                 <br>
                 <mat-form-field class="example-form">
-                    <input matInput type="text" placeholder="Category" id="category" name="category" #category="ngModel" ngModel
+                    <input matInput type="text" placeholder="User ID" id="userid" name="userid" #userid="ngModel" ngModel
                     minlength="3" maxlength="50">
                 </mat-form-field>
                 <br>
@@ -43,79 +40,7 @@
         </div>
     </mat-card-content>
 </mat-card>
-<ng-template #showAddMode>
-    <!--add-->
-    <form #addDataForm="ngForm" (ngSubmit)="setData(addDataForm.value);" novalidate>
 
-        <mat-error *ngif="savedChanges">
-            data saved
-            <label class="small-spacer"></label>
-            <mat-icon (click)="this.addDataForm.reset();savedChanges=false;toggle('searchMode');">clear</mat-icon>
-
-        </mat-error>
-        <div *ngIf="!savedChanges">
-            <mat-card-actions align="start">
-                <button type="submit" mat-raised-button [disabled]="!addDataForm.valid" color="primary">Add</button>
-                <button type="reset" (click)="this.addDataForm.reset();" mat-raised-button [disabled]="!addDataForm.valid" color="primary">Clear</button>
-                <span class="med-spacer"></span>
-                <span matTooltip="Search">
-                    <mat-icon color="primary" (click)="toggle('searchMode')">search</mat-icon>
-                </span>
-                <span class="small-spacer"></span>
-                <span matTooltip="Show Recent Results">
-                    <mat-icon color="primary" (click)="toggle('resMode');getData();">cached</mat-icon>
-                </span>
-            </mat-card-actions>
-
-            <mat-form-field>
-                <input matInput placeholder="Category" name="category" id="category" ngModel required minlength="1">
-                <mat-hint align="end"></mat-hint>
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput placeholder="Sub Category" name="scategory" id="scategory" ngModel required minlength="1">
-                <mat-hint align="end"></mat-hint>
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <textarea matInput placeholder="*IMP*: Search use Tags Text" name="tags" id="tags" ngModel required minlength="1"></textarea>
-                <mat-hint align="end"></mat-hint>
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <input matInput placeholder="Product Name" name="name" id="name" ngModel required minlength="1">
-                <mat-hint align="end"></mat-hint>
-            </mat-form-field>
-
-            <mat-form-field>
-                <input matInput placeholder="Short Name" name="sname" id="sname" ngModel>
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput placeholder="Long Name" name="lname" id="lname" ngModel>
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <textarea matInput placeholder="Description" name="descr" id="descr" ngModel></textarea>
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <input matInput placeholder="Color" name="color" id="color" ngModel>
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput placeholder="Size" name="size" id="size" ngModel>
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput placeholder="Price" name="price" id="price" ngModel required pattern="[0-9]+">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput placeholder="Shipping" name="shipping" id="shipping" ngModel pattern="[0-9]+">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput placeholder="Discount" name="discount" id="discount" ngModel pattern="[0-9]+">
-                <mat-hint align="end">eg. 0 if no discount is offered.</mat-hint>
-            </mat-form-field>
-        </div>
-    </form>
-</ng-template>
 <ng-template #showEditMode>
     <!--Edit-->
     <form #editDataForm="ngForm" (ngSubmit)="updateData(editDataForm.value);" novalidate>
@@ -141,22 +66,26 @@
             </mat-card-actions>
 
             <mat-form-field>
+                <input matInput placeholder="User ID" name="userid" id="userid" [ngModel]="myDocData.userid" required minlength="1">
+                <mat-hint align="end">User ID</mat-hint>
+            </mat-form-field>
+            <mat-form-field>
                 <input matInput placeholder="Category" name="category" id="category" [ngModel]="myDocData.category" required minlength="1">
-                <mat-hint align="end">eg. Men Garments</mat-hint>
+                <mat-hint align="end"></mat-hint>
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="Sub Category" name="scategory" id="scategory" [ngModel]="myDocData.scategory" required minlength="1">
-                <mat-hint align="end">eg. Shirt</mat-hint>
+                <mat-hint align="end"></mat-hint>
             </mat-form-field>
             <br>
             <mat-form-field>
                 <textarea matInput placeholder="*IMP*: Search use Tags Text" name="tags" id="tags" [ngModel]="myDocData.tags" required minlength="1"></textarea>
-                <mat-hint align="end">eg. Men,Reading,Glasses</mat-hint>
+                <mat-hint align="end"></mat-hint>
             </mat-form-field>
             <br>
             <mat-form-field>
                 <input matInput placeholder="Product Name" name="name" id="name" [ngModel]="myDocData.name" required minlength="1">
-                <mat-hint align="end">eg. Shirt</mat-hint>
+                <mat-hint align="end"></mat-hint>
             </mat-form-field>
 
             <mat-form-field>
@@ -177,6 +106,9 @@
                 <input matInput placeholder="Size" name="size" id="size" [ngModel]="myDocData.size">
             </mat-form-field>
             <mat-form-field>
+                <input matInput placeholder="Quantity" name="quantity" id="quantity" [ngModel]="myDocData.quantity" required pattern="[0-9]+">
+            </mat-form-field>
+            <mat-form-field>
                 <input matInput placeholder="Price" name="price" id="price" [ngModel]="myDocData.price" required pattern="[0-9]+">
             </mat-form-field>
             <mat-form-field>
@@ -195,9 +127,6 @@
         <span class="med-spacer"></span>
         <span class="med-spacer"></span>
         <span class="med-spacer"></span>
-        <span matTooltip="Add New">
-            <mat-icon color="primary" (click)="toggle('addMode')">add</mat-icon>
-        </span>
         <span class="small-spacer"></span>
         <span matTooltip="Search All">
             <mat-icon color="primary" (click)="toggle('searchMode')">search</mat-icon>
