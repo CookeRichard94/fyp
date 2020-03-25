@@ -1,7 +1,7 @@
 
 <mat-card>
     <mat-card-content>
-            <div *ngIf="(toggleField=='searchMode') else (toggleField=='addMode')? showAddMode : ((toggleField=='editMode')? showEditMode : showResMode)">
+            <div *ngIf="(toggleField=='searchMode') else ((toggleField=='editMode')? showEditMode : showResMode)">
             <!--search-->
             <form #searchFormData="ngForm" class="example-form">
                 <mat-card-actions>

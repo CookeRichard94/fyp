@@ -49,7 +49,7 @@ export class AdmincartsComponent implements OnInit {
   getData()
   {
     this.dataLoading = true;
-      this.querySubscription = this.backend_Service.getProducts('product')
+      this.querySubscription = this.backend_Service.getProducts('cart')
         .subscribe(members => {
           this.members = members;
           this.dataSource = new MatTableDataSource(members);
@@ -68,7 +68,7 @@ export class AdmincartsComponent implements OnInit {
   setData(formData)
   {
     this.dataLoading = true;
-      this.querySubscription = this.backend_Service.setProducts('product',formData)
+      this.querySubscription = this.backend_Service.setProducts('cart',formData)
         .subscribe(members => {
          if(members)
          {
@@ -89,7 +89,7 @@ export class AdmincartsComponent implements OnInit {
   updateData(formData)
   {
     this.dataLoading = true;
-      this.querySubscription = this.backend_Service.updateProducts('product',formData)
+      this.querySubscription = this.backend_Service.updateProducts('cart',formData)
         .subscribe(members => {
          if(members)
          {
@@ -118,7 +118,7 @@ export class AdmincartsComponent implements OnInit {
   getFilterData(filters)
   {
     this.dataLoading = true;
-      this.querySubscription = this.backend_Service.getFilterProducts('product', filters)
+      this.querySubscription = this.backend_Service.getFilterProducts('cart', filters)
         .subscribe(members => {
           this.members = members;
           this.dataSource = new MatTableDataSource(members);
@@ -137,7 +137,7 @@ export class AdmincartsComponent implements OnInit {
   getDoc(docId)
   {
     this.dataLoading = true;
-      this.querySubscription = this.backend_Service.getProductDoc('product', docId)
+      this.querySubscription = this.backend_Service.getProductDoc('cart', docId)
         .subscribe(res => {
          if(res)
          {
@@ -158,7 +158,7 @@ export class AdmincartsComponent implements OnInit {
   {
     if (confirm("Do you want to delete this product ?")){
     this.dataLoading = true;
-      this.querySubscription = this.backend_Service.deleteProductDoc('product', docId)
+      this.querySubscription = this.backend_Service.deleteProductDoc('cart', docId)
         .subscribe(res => {
          if(res)
          {
