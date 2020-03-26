@@ -62,7 +62,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebase, 'my-app-name')
+    AngularFireModule.initializeApp(environment.firebase, 'fyp')
   ],
   providers: [],
   bootstrap: [AppComponent]
