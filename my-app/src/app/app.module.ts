@@ -23,6 +23,11 @@ import { CartComponent } from './user/cart/cart.component';
 import { LoginComponent } from './user/login/login.component';
 import { UserComponent } from './user/user/user.component';
 import { ProductComponent } from './user/product/product.component';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -53,7 +58,11 @@ import { ProductComponent } from './user/product/product.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase, 'my-app-name')
   ],
   providers: [],
   bootstrap: [AppComponent]
