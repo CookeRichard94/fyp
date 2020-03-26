@@ -15,9 +15,9 @@ export class LoginComponent implements OnInit {
     this.userLoggedIn = false;
   }
 
-  login()
+  login(email, formData)
   {
-    
+
   }
 
 }
