@@ -1,38 +1,40 @@
-<mat-card *ngIf="!savedChanges else showSavedChangesCard">
+<mat-card *ngIf="!savedChanges else showSavedChanges">
     <form #formData='ngForm'>
-        <mat-card-title>
-            <span class="small-headline">Update Settings</span>
-        </mat-card-title>
-        <mat-error *ngIf="error">Your authentication is invalid, please logout and log in again. Error: {{ errorMessage}}</mat-error>
-        <mat-card-actions align="start">
-            <button type="button"(click)="onSubmit(formData.value)" [disabled]="!formData.valid" mat-raise-button-color="primary">Hello</button>
-            <button type="button"(click)="getUser()" mat-raise-button-color="primary">Refresh</button>
-            <button type="button"(click)="logout()" mat-raise-button-color="primary">Logout</button>
-        </mat-card-actions>
-        <mat-form-field class="example-form">
-            <input matInput placeholder="name" name="name" #name="ngModel" [ngModel]="this.data?.name" ngModel 
-            required minlength="3" maxlength="25">
-        </mat-form-field>
-        <span *ngIf="name.invalid && (name.dirty || name.touched)">
-            <mat-error *ngIf="name.errors['required']">Name is required</mat-error>
-            <mat-error *ngIf="name.errors['minlength']">Name cannot be less than 3 characters</mat-error>
-            <mat-error *ngIf="name.errors['maxlength']">Name cannot be more than 25 characters</mat-error>
-        </span>
-        <br/>
-        <mat-form-field class="example-form">
-            <input matInput placeholder="email" email="email" #email="ngModel" [ngModel]="this.data?.email" ngModel required >
-        </mat-form-field>
-        <br/>
-        <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">Please enter a valid email</mat-error>
-        <mat-form-field class="example-form">
-            <input matInput placeholder="password" password="password" #password="ngModel" [ngModel]="this.data?.password" ngModel 
-            required minlength="5" maxlength="30">
-        </mat-form-field>
-        <span *ngIf="password.invalid && (password.dirty || password.touched)">
-            <mat-error *ngIf="password.errors['required']">Password is required</mat-error>
-            <mat-error *ngIf="password.errors['minlength']">Password cannot be less than 5 characters</mat-error>
-            <mat-error *ngIf="password.errors['maxlength']">Name cannot be more than 30 characters</mat-error>
-        </span>
+        <mat-card-content>
+            <mat-card-title>
+                <span class="small-headline">Update Settings</span>
+            </mat-card-title>
+            <mat-error *ngIf="error">Your authentication is invalid, please logout and log in again. Error: {{ errorMessage}}</mat-error>
+            <mat-card-actions align="start">
+                <button type="button"(click)="onSubmit(formData.value)" [disabled]="!formData.valid" mat-raise-button-color="primary">Hello</button>
+                <button type="button"(click)="getUser()" mat-raise-button-color="primary">Refresh</button>
+                <button type="button"(click)="logout()" mat-raise-button-color="primary">Logout</button>
+            </mat-card-actions>
+            <mat-form-field class="example-form">
+                <input matInput placeholder="name" name="name" #name="ngModel" [ngModel]="this.data?.name" ngModel 
+                required minlength="3" maxlength="25">
+            </mat-form-field>
+            <span *ngIf="name.invalid && (name.dirty || name.touched)">
+                <mat-error *ngIf="name.errors['required']">Name is required</mat-error>
+                <mat-error *ngIf="name.errors['minlength']">Name cannot be less than 3 characters</mat-error>
+                <mat-error *ngIf="name.errors['maxlength']">Name cannot be more than 25 characters</mat-error>
+            </span>
+            <br/>
+            <mat-form-field class="example-form">
+                <input matInput placeholder="email" email="email" #email="ngModel" [ngModel]="this.data?.email" ngModel required >
+            </mat-form-field>
+            <br/>
+            <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">Please enter a valid email</mat-error>
+            <mat-form-field class="example-form">
+                <input matInput placeholder="password" password="password" #password="ngModel" [ngModel]="this.data?.password" ngModel 
+                required minlength="5" maxlength="30">
+            </mat-form-field>
+            <span *ngIf="password.invalid && (password.dirty || password.touched)">
+                <mat-error *ngIf="password.errors['required']">Password is required</mat-error>
+                <mat-error *ngIf="password.errors['minlength']">Password cannot be less than 5 characters</mat-error>
+                <mat-error *ngIf="password.errors['maxlength']">Name cannot be more than 30 characters</mat-error>
+            </span>
+        </mat-card-content>
     </form>
 </mat-card>
 <ng-template #showSavedChanges>

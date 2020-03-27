@@ -2,15 +2,16 @@
 <mat-card>
     <div *ngIf="userLoggedIn; else showLogin">
         <button type="button" routerLink="/product" mat-raised-button-color="accent">Continue Shopping</button>
+        <button type="button" (click)="logout();" mat-raised-button-color="warn">Logout</button>
     </div>
-    <ng-Template #showShopping>
+    <ng-template #showLogin>
         <mat-card-content>
             <form #formData="ngForm" (ngSubmit)="login('email',formData.value)" class="example-form">
             <mat-card-actions *ngIf="error">
                 <mat-error>Login credentials are not verified. Here is the error: {{ error }}</mat-error>
             </mat-card-actions>
             <mat-error *ngIf="dataLoading">
-                <mat-progress-spinner mode="indeterminate" [attr.color]="primary" [value]="15"></mat-progress-spinner>
+                <mat-progress-bar mode="indeterminate" color="primary" [value]="15"></mat-progress-bar>
             </mat-error>
             <mat-error *ngIf="brokenNetwork" class="label-error">Network Connection Error.</mat-error>
             <mat-card-actions align="start">
@@ -34,5 +35,5 @@
         <mat-chip color="warn" selected="true" (click)="login('GOOGLE')">
             Login With Google
         </mat-chip>
-    </ng-Template>
+    </ng-template>
 </mat-card>
