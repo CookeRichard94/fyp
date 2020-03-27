@@ -1,13 +1,35 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AngularFireAuth} from '@angular/fire/auth';
+import { auth} from 'firebase';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
 
-  constructor() { }
+  constructor(public fAuth: AngularFireAuth) { }
 
+  login()
+  {
+    this.fAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+  }
+
+  logout()
+  {
+    this.fAuth.auth.signOut();
+  }
+
+
+
+
+
+
+
+
+
+
+  //FAKE -- DELETE WHEN NEW CREATED
   getCartTotal(){
      let fakeresponse = "6";
      return Observable.create(

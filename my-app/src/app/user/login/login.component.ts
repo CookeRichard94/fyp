@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(private backend_service: BackendService) { }
 
   ngOnInit(): void {
-    this.userLoggedIn = false;
+    this.getAuthStatus();
   }
 
   login(filter, formData)
@@ -25,6 +25,11 @@ export class LoginComponent implements OnInit {
   }
 
   logout()
+  {
+
+  }
+
+  getAuthStatus()
   {
 
   }
