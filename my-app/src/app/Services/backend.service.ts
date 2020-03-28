@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFireAuth} from '@angular/fire/auth';
+import * as firebase from 'firebase/app';
 import { auth} from 'firebase';
 
 @Injectable({
@@ -10,14 +11,31 @@ export class BackendService {
 
   constructor(public fAuth: AngularFireAuth) { }
 
-  login()
+  login(loginType, formData?)
   {
-    this.fAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    //this.fAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+
+    if(formData)
+    {
+      return this.fAuth.auth.signInWithEmailAndPassword(formData.email, formData.password);
+    }
+    else{
+      let loginMethod;
+      if(loginType == "GOOGLE")
+      {
+        loginMethod = new firebase.auth.GoogleAuthProvider();
+      }
+      return this.fAuth.auth.signInWithRedirect(loginMethod);
+    }
   }
 
   logout()
   {
     this.fAuth.auth.signOut();
+  }
+
+  isUserLoggedIn(){
+    return this.fAuth.authState;
   }
 
 
