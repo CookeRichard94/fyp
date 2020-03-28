@@ -13,7 +13,7 @@
             <mat-error *ngIf="dataLoading">
                 <mat-progress-bar mode="indeterminate" color="primary" [value]="15"></mat-progress-bar>
             </mat-error>
-            <mat-error *ngIf="brokenNetwork" class="label-error">Network Connection Error.</mat-error>
+            <!--<mat-error *ngIf="brokenNetwork" class="label-error">Network Connection Error.</mat-error>-->
             <mat-card-actions align="start">
                 <button type="submit" [disabled]="!formData.valid" mat-raised-button color="primary">Log in</button>
             </mat-card-actions>
@@ -36,4 +36,4 @@
             Login With Google
         </mat-chip>
     </ng-template>
-</mat-card>
+</mat-card> 

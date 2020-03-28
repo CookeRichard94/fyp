@@ -31,11 +31,16 @@ export class BackendService {
 
   logout()
   {
-    this.fAuth.auth.signOut();
+    return this.fAuth.auth.signOut();
   }
 
   isUserLoggedIn(){
     return this.fAuth.authState;
+  }
+
+  redirectLogin()
+  {
+    return this.fAuth.auth.getRedirectResult();
   }
 
 
