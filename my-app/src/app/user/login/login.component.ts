@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService} from './../../Services/backend.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string = "";
   dataLoading: boolean = false;
 
-  constructor(private backend_service: BackendService) { }
+  constructor(private backend_service: BackendService, public fAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
     this.getAuthStatus();
@@ -43,6 +44,10 @@ export class LoginComponent implements OnInit {
       if(result.credential)
       {
         console.log(result.credential)
+        if(result.credential["accessToken"] != "")
+        {
+          return this.userLoggedIn = false
+        }
         this.dataLoading=false;
       }
     }).catch(

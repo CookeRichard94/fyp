@@ -1,6 +1,6 @@
 <app-header pageTitle = "Login" iconTitle = "account_circle"></app-header>
 <mat-card>
-    <div *ngIf="userLoggedIn; else showLogin">
+    <div *ngIf="fAuth.user | async as user; else showLogin">
         <button type="button" routerLink="/product" mat-raised-button-color="accent">Continue Shopping</button>
         <button type="button" (click)="logout();" mat-raised-button-color="warn">Logout</button>
     </div>
