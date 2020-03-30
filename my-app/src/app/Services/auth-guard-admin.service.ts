@@ -20,14 +20,14 @@ export class AuthGuardAdminService implements CanActivate{
     .pipe(map(res =>{
       if(res)
       {
-        return true;
+        return res.isAdmin;
       }
       else{
         return false;
       }
     }))
-    .pipe(tap(isadmin => {
-      console.log(isadmin)
+    .pipe(tap(isAdmin => {
+      console.log(isAdmin)
       return true;
     }))
   }
