@@ -3,13 +3,16 @@ import { Observable } from 'rxjs';
 import { AngularFireAuth} from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import { auth} from 'firebase';
+import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
+  private itemDoc: AngularFirestoreDocument;
+  item: Observable<any>;
 
-  constructor(public fAuth: AngularFireAuth) { }
+  constructor(public fAuth: AngularFireAuth, private afs: AngularFirestore) { }
 
   login(loginType, formData?)
   {

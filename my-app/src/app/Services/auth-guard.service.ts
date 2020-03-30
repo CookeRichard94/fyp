@@ -3,7 +3,6 @@ import { CanActivate, Router } from '@angular/router';
 import {AngularFireAuth} from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import { Observable, from } from "rxjs";
-import 'rxjs/add/operator/do';
 import { take } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
