@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { AngularFireAuth} from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import { auth} from 'firebase';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
+import { take } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
-  private itemDoc: AngularFirestoreDocument;
+  private itemDoc: AngularFirestoreDocument<any>;
   item: Observable<any>;
 
   constructor(public fAuth: AngularFireAuth, private afs: AngularFirestore) { }
@@ -37,13 +40,34 @@ export class BackendService {
     return this.fAuth.auth.signOut();
   }
 
-  isUserLoggedIn(){
-    return this.fAuth.authState;
-  }
-
   redirectLogin()
   {
     return this.fAuth.auth.getRedirectResult();
+  }
+
+  getDoc(collUrl: string)
+  {
+    this.itemDoc = this.afs.doc<any>(collUrl);
+
+    return this.itemDoc.valueChanges();
+  }
+
+  isUserLoggedIn(): Observable<boolean>
+  {
+    return from(this.fAuth.authState)
+    .pipe(take(1))
+    .pipe(map(state => !!state))
+    .pipe(tap(authenticated =>{
+      return authenticated;
+    }));
+
+  }
+
+  isAdmin()
+  {
+    let collUrl = !this.isUserLoggedIn() ? "abcd": this.fAuth.auth.currentUser.uid;
+    collUrl = "fyp/ecommerce/admins/" + collUrl;
+    return this.getDoc(collUrl);
   }
 
 

@@ -16,19 +16,19 @@ export class AuthGuardAdminService implements CanActivate{
   canActivate(): Observable<boolean>
   {
     return this.backend_service.isAdmin()
-    .take(1)
-    .map(res =>{
+    .pipe(take(1))
+    .pipe(map(res =>{
       if(res)
       {
-        return res.isadmin;
+        return true;
       }
       else{
         return false;
       }
-    })
-    .do(isadmin => {
+    }))
+    .pipe(tap(isadmin => {
       console.log(isadmin)
       return true;
-    })
+    }))
   }
 }
