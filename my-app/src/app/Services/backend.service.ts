@@ -65,9 +65,37 @@ export class BackendService {
 
   isAdmin()
   {
-    let collUrl = !this.isUserLoggedIn() ? "abcd": this.fAuth.auth.currentUser.uid;
+    let collUrl = !this.isUserLoggedIn() ? "Not Logged in": this.fAuth.auth.currentUser.uid;
     collUrl = "fyp/ecommerce/admins/" + collUrl;
     return this.getDoc(collUrl);
+  }
+
+  setProducts(coll: string, data: any, docId?: any)
+  {
+    const id = this.afs.createId();
+    const item = {id, name};
+    const timeStamp = this.timeStamp;
+    var docRef = this.afs.collection(this.getCollectionUrl(coll)).doc(item.id);
+
+    return docRef.set(({
+      ...data,
+      _id: id,
+      updatedAt: timeStamp,
+      createdAt: timeStamp,
+      delete_flag: "N"
+    }));
+
+  }
+
+  get timeStamp()
+  {
+    var d = new Date();
+    return d;
+  }
+
+  getCollectionUrl(filter)
+  {
+    return "fyp/ecommerce/" + filter;
   }
 
 
@@ -133,18 +161,6 @@ let fakeresponse = [{
       },2000)
     }
   )
-}
-
-setProducts(collType, formData)
-{
-  let fakeresponse = true;
-    return Observable.create(
-      observer => {
-        setTimeout(() =>{
-          observer.next(fakeresponse)
-        },2000)
-      }
-    )
 }
 
 updateProducts(collType, formData)
