@@ -28,6 +28,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebase, 'fyp')
+    AngularFireModule.initializeApp(environment.firebase, 'fyp'),
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

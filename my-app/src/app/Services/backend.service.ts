@@ -3,7 +3,7 @@ import { Observable, from } from 'rxjs';
 import { AngularFireAuth} from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import { auth} from 'firebase';
-import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection} from '@angular/fire/firestore';
 import { take } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
@@ -13,6 +13,7 @@ import { tap } from 'rxjs/operators';
 })
 export class BackendService {
   private itemDoc: AngularFirestoreDocument<any>;
+  private itemCollection: AngularFirestoreCollection<any>;
   item: Observable<any>;
 
   constructor(public fAuth: AngularFireAuth, private afs: AngularFirestore) { }
@@ -68,6 +69,12 @@ export class BackendService {
     let collUrl = !this.isUserLoggedIn() ? "Not Logged in": this.fAuth.auth.currentUser.uid;
     collUrl = "fyp/ecommerce/admins/" + collUrl;
     return this.getDoc(collUrl);
+  }
+
+  getProducts(coll: string, filters?: any)
+  {
+    this.itemCollection = this.afs.collection<any>(this.getCollectionUrl(coll));
+    return this.itemCollection.valueChanges();
   }
 
   setProducts(coll: string, data: any, docId?: any)
@@ -130,21 +137,7 @@ export class BackendService {
     )
  }
 
- getProducts(collType){
-  let fakeresponse = [{
-    'category': "test",
-    'scategory': "test",
-    'name': "test",
-    'price': "500",
-    '_id': "123",
-  }];
-  return Observable.create(
-    observer => {
-      setTimeout(() =>{
-        observer.next(fakeresponse)
-      },2000)
-    }
-  )}
+ 
 
 getFilterProducts(collType, filters){
 let fakeresponse = [{

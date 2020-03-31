@@ -49,20 +49,13 @@ export class SetproductComponent implements OnInit, OnDestroy {
   getData()
   {
     this.dataLoading = true;
-      this.querySubscription = this.backend_Service.getProducts('product')
+    this.querySubscription = this.backend_Service.getProducts('product')
         .subscribe(members => {
-          this.members = members;
-          this.dataSource = new MatTableDataSource(members);
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
-        },
-        (error) => {
-          this.error  =true;
-          this.errorMessage = error.message;
-          this.dataLoading = false;
-        },
-        () =>{this.error =false; this.dataLoading = false;}
-        );
+            this.members = members;
+            this.dataSource = new MatTableDataSource(members);
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+        });
   }
 
   setData(formData)

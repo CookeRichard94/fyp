@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BackendService } from '../../Services/backend.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -28,19 +28,7 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   getData()
   {
-    this.dataLoading = true;
-      this.querySubscription = this.backend_Service.getProducts('product')
-        .subscribe(members => {
-          this.members = members;
-          this.dataLoading = false;
-        },
-        (error) => {
-          this.error  =true;
-          this.errorMessage = error.message;
-          this.dataLoading = false;
-        },
-        () =>{this.error =false; this.dataLoading = false;}
-        );
+    this.members = this.backend_Service.getProducts('product');
   }
 
   getFilterData(filters)

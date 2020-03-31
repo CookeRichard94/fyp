@@ -18,8 +18,7 @@
     </mat-card-actions>
     <mat-card-content *ngIf="toggle else showProductDetails">
         <mat-list>
-            <!--<mat-list-item *ngFor="let item of members | async" (click)="showDetails(item);toggle=!toggle">-->
-            <mat-list-item *ngFor="let item of members" (click)="showDetails(item);toggle=!toggle">
+            <mat-list-item *ngFor="let item of members | async" (click)="showDetails(item);toggle=!toggle">
                 <h4 mat-line>
                     {{item.name}}
                     <mat-icon mat-list-icon>pageview</mat-icon>
