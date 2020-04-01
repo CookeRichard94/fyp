@@ -126,6 +126,14 @@ export class BackendService {
     }));
   }
 
+  deleteProductDoc(coll: string, docId: string){
+   
+    return this.afs.collection(this.getCollectionUrl(coll)).doc(docId).delete();
+
+  }
+
+
+
 
 
 
@@ -180,16 +188,6 @@ let fakeresponse = [{
 
 
 
-deleteProductDoc(collType, id){
-  let fakeresponse = true;
-    return Observable.create(
-      observer => {
-        setTimeout(() =>{
-          observer.next(fakeresponse)
-        },2000)
-      }
-    )
-}
 
 updateShopping(collType, data){
   let fakeresponse = true;

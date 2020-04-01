@@ -142,23 +142,12 @@ export class SetproductComponent implements OnInit, OnDestroy {
 
   deleteDoc(docId)
   {
-    if (confirm("Do you want to delete this product ?")){
-    this.dataLoading = true;
-      this.querySubscription = this.backend_Service.deleteProductDoc('product', docId)
-        .subscribe(res => {
-         if(res)
-         {
-           this.toggle('searchMode');
-         }
-        },
-        (error) => {
-          this.error  =true;
-          this.errorMessage = error.message;
-          this.dataLoading = false;
-        },
-        () =>{this.error =false; this.dataLoading = false;}
-        );
-      }
+    if (confirm("Are you sure want to delete this product ?")) {
+      this.dataLoading = true;
+      this.backend_Service.deleteProductDoc('product', docId).then((res) => {
+          this.toggle('searchMode');
+      });
+  }
   }
 
   getPic(picId)
