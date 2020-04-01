@@ -105,6 +105,27 @@ export class BackendService {
     return "fyp/ecommerce/" + filter;
   }
 
+  getProductDoc(collType, id){
+    let docUrl = this.getCollectionUrl(collType)+"/"+id;
+
+    this.itemDoc = this.afs.doc<any>(docUrl);
+    return this.itemDoc.valueChanges();
+  }
+
+  updateProducts(coll: string, data: any, docId?: any)
+  {
+    const id = this.afs.createId();
+    const item = {id, name};
+    const timeStamp = this.timeStamp;
+    var docRef = this.afs.collection(this.getCollectionUrl(coll)).doc(data._id);
+
+    return docRef.update(({
+      ...data,
+      _id: id,
+      updatedAt: timeStamp
+    }));
+  }
+
 
 
 
@@ -156,34 +177,8 @@ let fakeresponse = [{
   )
 }
 
-updateProducts(collType, formData)
-{
-  let fakeresponse = true;
-    return Observable.create(
-      observer => {
-        setTimeout(() =>{
-          observer.next(fakeresponse)
-        },2000)
-      }
-    )
-}
 
-getProductDoc(collType, id){
-  let fakeresponse = {
-    'category': "test",
-    'scategory': "test",
-    'name': "test",
-    'price': "500",
-    '_id': "123",
-  };
-  return Observable.create(
-    observer => {
-      setTimeout(() =>{
-        observer.next(fakeresponse)
-      },2000)
-    }
-  )
-}
+
 
 deleteProductDoc(collType, id){
   let fakeresponse = true;

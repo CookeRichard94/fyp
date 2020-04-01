@@ -13,7 +13,7 @@
                     </span>
                     <span class="example-form"></span>
                     <span matTooltip="Show Results">
-                        <mat-icon color="primary" (click)="toggle('resMode');getData;">cached</mat-icon>
+                        <mat-icon color="primary" (click)="toggle('resMode');getData();">cached</mat-icon>
                     </span>
                 </mat-card-actions>
                 <br>
@@ -47,7 +47,7 @@
     <!--add-->
     <form #addDataForm="ngForm" (ngSubmit)="setData(addDataForm.value);" novalidate>
 
-        <mat-error *ngif="savedChanges">
+        <mat-error *ngIf="savedChanges">
             data saved
             <label class="small-spacer"></label>
             <mat-icon (click)="this.addDataForm.reset();savedChanges=false;toggle('searchMode');">clear</mat-icon>
@@ -120,7 +120,7 @@
     <!--Edit-->
     <form #editDataForm="ngForm" (ngSubmit)="updateData(editDataForm.value);" novalidate>
         <input type="hidden" name="_id" id="_id" [ngModel]="myDocData._id" required>
-        <mat-error *ngif="savedChanges">
+        <mat-error *ngIf="savedChanges">
             data saved
             <label class="small-spacer"></label>
             <mat-icon (click)="this.editDataForm.reset();savedChanges=false;toggle('searchMode');">clear</mat-icon>
@@ -228,7 +228,7 @@
                     <mat-cell *matCellDef="let row"> {{row.price}} </mat-cell>
                 </ng-container>
             <ng-container matColumnDef="_id">
-                <mat-header-cell *matHeaderCellDef> action </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
                 <mat-cell *matCellDef="let row">
                         <button mat-icon-button matTooltip="Show Picture" *ngIf="row.path" (click)="getPic(row.path);this.showHostSelfie=true;">
                             <mat-icon color="primary">photo_camera</mat-icon>
