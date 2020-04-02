@@ -30,6 +30,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CommonModule } from '@angular/common';
 import { SignupComponent } from './user/signup/signup.component';
+import { UploadComponent } from './shared/upload/upload.component';
+import {FileSizePipe} from './shared/upload/filesize.pipe';
+import {UploadDirective} from './shared/upload/upload.directive';
 
 
 @NgModule({
@@ -51,7 +54,10 @@ import { SignupComponent } from './user/signup/signup.component';
     LoginComponent,
     UserComponent,
     ProductComponent,
-    SignupComponent
+    SignupComponent,
+    UploadComponent,
+    FileSizePipe,
+    UploadDirective
 
   ],
   imports: [

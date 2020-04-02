@@ -207,7 +207,7 @@
     <div *ngIf="takeHostSelfie" width="300">
         <button type="reset" (click)="takeHostSelfie=false;" mat-icon-button color="primary"><mat-icon>clear</mat-icon></button>
         <br>
-        <fileupload fileUrl="product" docId="{{this.myDocId}}"></fileupload>
+        <app-upload fileUrl="product" docId="{{this.myDocId}}"></app-upload>
     </div>
     <div *ngIf="showHostSelfie" width="300">
         <button type="reset" (click)="showHostSelfie=false;" mat-icon-button color="primary"><mat-icon>clear</mat-icon></button>

@@ -131,6 +131,21 @@ export class BackendService {
     return this.afs.collection(this.getCollectionUrl(coll)).doc(docId).delete();
   }
 
+  setProductPic(filePath, coll, docId?)
+  {
+    var docRef = this.afs.collection(this.getCollectionUrl(coll)).doc(docId);
+    return docRef.set({
+      path:filePath
+    }, {merge:true});
+  }
+
+  deleteProductPic(coll, docId?)
+  {
+    var docRef = this.afs.collection(this.getCollectionUrl(coll)).doc(docId);
+    return docRef.set({
+      path:null
+    }, {merge:true});
+  }
 
 
 
