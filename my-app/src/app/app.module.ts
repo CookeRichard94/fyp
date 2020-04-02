@@ -29,6 +29,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CommonModule } from '@angular/common';
+import { SignupComponent } from './user/signup/signup.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { CommonModule } from '@angular/common';
     CartComponent,
     LoginComponent,
     UserComponent,
-    ProductComponent
+    ProductComponent,
+    SignupComponent
 
   ],
   imports: [

@@ -203,6 +203,18 @@
             <mat-icon color="primary" (click)="toggle('searchMode')">search</mat-icon>
         </span>
     </mat-card-actions>
+
+    <div *ngIf="takeHostSelfie" width="300">
+        <button type="reset" (click)="takeHostSelfie=false;" mat-icon-button color="primary"><mat-icon>clear</mat-icon></button>
+        <br>
+        <fileupload fileUrl="product" docId="{{this.myDocId}}"></fileupload>
+    </div>
+    <div *ngIf="showHostSelfie" width="300">
+        <button type="reset" (click)="showHostSelfie=false;" mat-icon-button color="primary"><mat-icon>clear</mat-icon></button>
+        <br>
+        <img [src]="profileUrl | async" width="300" height="300"/>
+        <br>
+    </div>
     
     <div class="example-header">
         <mat-form-field>
@@ -230,14 +242,14 @@
             <ng-container matColumnDef="_id">
                 <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
                 <mat-cell *matCellDef="let row">
-                        <button mat-icon-button matTooltip="Show Picture" *ngIf="row.path" (click)="getPic(row.path);this.showHostSelfie=true;">
-                            <mat-icon color="primary">photo_camera</mat-icon>
-                        </button>
-                        <button mat-icon-button matTooltip="Remove Picture" *ngIf="row.path" (click)="deleteProductPic(row._id);this.showHostSelfie=false;">
-                            <mat-icon color="primary">camera_roll</mat-icon>
-                        </button>
-                        <button mat-icon-button matTooltip="Take Picture" (click)="this.myDocId=row._id;this.takeHostSelfie=true;" class="label-error"
-                            *ngIf="!row.path" class="label-error"><mat-icon>camera_roll</mat-icon></button>
+                    <button mat-icon-button matTooltip="Show Picture" *ngIf="row.path" (click)="getPic(row.path);this.showHostSelfie=true;">
+                        <mat-icon color="primary">photo_camera</mat-icon>
+                    </button>
+                    <button mat-icon-button matTooltip="Remove Picture" *ngIf="row.path" (click)="deleteProductPic(row._id);this.showHostSelfie=false;">
+                        <mat-icon color="primary">camera_roll</mat-icon>
+                    </button>
+                    <button mat-icon-button matTooltip="Take Picture" (click)="this.myDocId=row._id;this.takeHostSelfie=true;" class="label-error"
+                        *ngIf="!row.path" class="label-error"><mat-icon>camera_roll</mat-icon></button>
                     <span matTooltip="Edit">
                         <button mat-icon-button (click)="getDoc(row._id)">
                             <mat-icon color="success">edit</mat-icon>

@@ -3,6 +3,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { BackendService} from '../../Services/backend.service';
+import { Observable } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 
 
@@ -25,13 +27,14 @@ export class SetproductComponent implements OnInit, OnDestroy {
   myDocData;
   takeHostSelfie = false;
   showHostSelfie = false;
+  profileUrl: Observable<string | null>;
   
   displayedColumns = ['category', 'scategory', 'name', 'price', '_id'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private backend_Service: BackendService) { }
+  constructor(private backend_Service: BackendService, private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
     this.toggleField = "searchMode";
@@ -150,14 +153,14 @@ export class SetproductComponent implements OnInit, OnDestroy {
   }
   }
 
-  getPic(picId)
-  {
-
+  getPic(picId) {
+    const ref = this.storage.ref(picId);
+    this.profileUrl = ref.getDownloadURL();
   }
-
-  deleteProductPic(docId)
-  {
-
+  deleteProductPic(docId){
+    if (confirm("Are you sure want to delete this picture ?")) {
+    this.backend_Service.deleteProductPic('product',docId);
+    }
   }
 
   ngOnDestroy()
