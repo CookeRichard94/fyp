@@ -7,6 +7,7 @@ import { SettingsComponent} from './settings/settings.component';
 import { AdmintabComponent } from './admin/admintab/admintab.component';
 import { ProductComponent } from './user/product/product.component';
 import { LoginComponent } from './user/login/login.component';
+import {SignupComponent} from './user/signup/signup.component';
 import {AuthGuardService} from './Services/auth-guard.service';
 import {AuthGuardAdminService} from './Services/auth-guard-admin.service';
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'admin', component: AdmintabComponent, canActivate: [AuthGuardAdminService]},
   { path: 'product', component: ProductComponent, canActivate: [AuthGuardService]},
   { path: 'login', component: LoginComponent},
+  { path: 'signup', component: SignupComponent},
   { path: '**', component: NotFoundComponent}
 ];
 

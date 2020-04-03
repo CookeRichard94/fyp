@@ -7,6 +7,7 @@ import {AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection} 
 import { take } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -133,6 +134,10 @@ export class BackendService {
 
   setProductPic(filePath, coll, docId?)
   {
+    console.log(filePath)
+    console.log(this.getCollectionUrl(coll))
+    console.log(docId)
+
     var docRef = this.afs.collection(this.getCollectionUrl(coll)).doc(docId);
     return docRef.set({
       path:filePath
@@ -145,6 +150,13 @@ export class BackendService {
     return docRef.set({
       path:null
     }, {merge:true});
+  }
+
+  createUser(data){
+    if (environment.database == 'firebase') {
+      return this.fAuth.auth.createUserWithEmailAndPassword(data.value.email, data.value.password);
+  }
+
   }
 
 

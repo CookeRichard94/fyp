@@ -37,6 +37,10 @@ export class UploadComponent {
         this.error = false;
     }
     const filePath = 'fyp/ecommerce/' + this.fileUrl + '/' + new Date().getTime();
+    
+      const task = this.storage.upload(filePath, file);
+      this.percentage = task.percentageChanges();
+
       this.task = this.storage.upload(filePath, file);
       this.percentage = this.task.percentageChanges();
       this.task.snapshotChanges().pipe(

@@ -13,7 +13,8 @@ export const environment = {
     messagingSenderId: "820708356526",
     appId: "1:820708356526:web:8b5b91cdf29b1519e3983f",
     measurementId: "G-S0M2FWQRBM"
-  }
+  },
+  database: 'firebase'
 
 };
 
