@@ -34,6 +34,8 @@
         <span matTooltip="Show All Products">
             <mat-icon color="primary" (click)="toggle=!toggle">backspace</mat-icon>
         </span>
+        <br/>
+        <img [src]="profileUrl | async" width="300" height="300" /> 
         <p class="label-go" mat-line> {{myDocData.sname }}  {{myDocData.lname }}</p>
         <p class="label-hint" mat-line> {{myDocData.descr }}</p>
         <p class="label-go" mat-line> Color: {{myDocData.color }} Size: {{myDocData.size }} Price: {{myDocData.price }} </p>
@@ -54,6 +56,5 @@
         <span class="med-spacer"></span>
         <button [disabled]="counter < 1" mat-raised-button color="accent" (click)="addToCart(myDocData, counter)">Add to Cart</button>
         <br/>
-        <!--<img [src]="profileUrl | async" width="300" height="300" /> -->
     </ng-template>
 </mat-card>
