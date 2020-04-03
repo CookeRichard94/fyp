@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BackendService } from '../../Services/backend.service';
 import { Observable, of } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-product',
@@ -16,11 +17,11 @@ export class ProductComponent implements OnInit, OnDestroy {
   dataLoading: boolean = false;
   private querySubscription;
   counter = 0;
-  profileUrl: string;
+  profileUrl: Observable<string | null>;
   myDocData;
   members: Observable<any>;
 
-  constructor(private backend_Service: BackendService) { }
+  constructor(private backend_Service: BackendService, private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
     this.getData();
@@ -33,24 +34,17 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   getFilterData(filters)
   {
-    this.dataLoading = true;
-      this.querySubscription = this.backend_Service.getFilterProducts('product', filters)
-        .subscribe(members => {
-          this.members = members;
-          this.dataLoading = false;
-        },
-        (error) => {
-          this.error  =true;
-          this.errorMessage = error.message;
-          this.dataLoading = false;
-        },
-        () =>{this.error =false; this.dataLoading = false;}
-        );
+    if (filters) {
+      this.members = this.backend_Service.getFilterProducts('product', filters);
+  } else {
+      this.getData();
+  }
   }
 
-  getPic(picID){
-    this.profileUrl = "";
-  }
+  getPic(picId) {
+    const ref = this.storage.ref(picId);
+    this.profileUrl = ref.getDownloadURL();
+}
 
   showDetails(item) {
     this.counter = 0;
@@ -88,21 +82,11 @@ addToCart(item, counter){
   this.dataLoading = true;
   let data = item;
   data.qty = counter;
-  
-
-  this.querySubscription = this.backend_Service.updateShoppingCart('cart', data)
-    .subscribe(members => {
+  return this.backend_Service.updateShoppingCart('cart',data).then((success)=> {
       this.dataLoading = false;
-      this.counter = 0;
-      this.savedChanges = false;
-    },
-    (error) => {
-      this.error  =true;
-      this.errorMessage = error.message;
-      this.dataLoading = false;
-    },
-    () =>{this.error =false; this.dataLoading = false;}
-    );
+      this.counter=0;
+      this.savedChanges=true;
+  });
 }
 
 ngOnDestroy() {

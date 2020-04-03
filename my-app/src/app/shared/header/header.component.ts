@@ -22,7 +22,8 @@ export class HeaderComponent implements OnInit {
         this.counter = res;
       }
     );
-    this.backendservice.getUserStatus().subscribe(
+    
+    this.backendservice.isUserLoggedIn().subscribe(
       (res) => {
         this.UserStatusColour = res ? "success" : "war";
       }

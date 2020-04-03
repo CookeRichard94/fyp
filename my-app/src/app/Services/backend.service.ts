@@ -21,8 +21,6 @@ export class BackendService {
 
   login(loginType, formData?)
   {
-    //this.fAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
-
     if(formData)
     {
       return this.fAuth.auth.signInWithEmailAndPassword(formData.email, formData.password);
@@ -153,10 +151,22 @@ export class BackendService {
   }
 
   createUser(data){
-    if (environment.database == 'firebase') {
-      return this.fAuth.auth.createUserWithEmailAndPassword(data.value.email, data.value.password);
+  if (environment.database == 'firebase') {
+
+    return this.fAuth.auth.createUserWithEmailAndPassword(data.value.email, data.value.password);
+    }
   }
 
+  checkIfUserSignedIn() {
+    return this.fAuth.authState;
+  }
+
+  getFilterProducts(coll: string, filters) {
+    return this.afs.collection(this.getCollectionUrl(coll), ref =>
+    ref.where('delete_flag', '==', 'N')
+        .where('tags' , 'array-contains', filters)
+        .orderBy('tags', 'desc')
+  ).valueChanges();
   }
 
 
@@ -179,40 +189,7 @@ export class BackendService {
          },2000)
        }
      )
-  }
-
-  getUserStatus(){
-    let fakeresponse = true;
-    return Observable.create(
-      observer => {
-        setTimeout(() =>{
-          observer.next(fakeresponse)
-        },2000)
-      }
-    )
- }
-
- 
-
-getFilterProducts(collType, filters){
-let fakeresponse = [{
-    'category': "test",
-    'scategory': "test",
-    'name': "test",
-    'price': "500",
-    '_id': "123",
-  }];
-  return Observable.create(
-    observer => {
-      setTimeout(() =>{
-        observer.next(fakeresponse)
-      },2000)
-    }
-  )
-}
-
-
-
+  } 
 
 
 updateShopping(collType, data){
