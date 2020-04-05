@@ -184,6 +184,14 @@ export class BackendService {
     });
   }
 
+  getCart(coll: string) {
+    this.itemCollection = this.afs.collection<any>(this.getCollectionUrl(coll), ref =>
+    ref.where('author', '==', this.fAuth.auth.currentUser.uid)
+    );
+    return this.itemCollection.valueChanges();
+    
+}
+
 
 
 
