@@ -14,3 +14,7 @@ td, th{
 .mat-success {
     color: rgb(132, 204, 23);
 }
+
+html {
+    height: 100%;
+  }

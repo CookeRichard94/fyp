@@ -169,6 +169,21 @@ export class BackendService {
   ).valueChanges();
   }
 
+  updateShoppingCart(coll: string, data){
+    const id = this.afs.createId();
+    const item = { id, name };
+    const timestamp = this.timeStamp
+    var docRef = this.afs.collection(this.getCollectionUrl(coll)).doc(item.id);
+    return docRef.set({
+        ...data,
+        author: this.fAuth.auth.currentUser.uid,
+        authorEmail: this.fAuth.auth.currentUser.email,
+        updatedAt: timestamp,
+        createdAt: timestamp,
+        delete_flag: "N",
+    });
+  }
+
 
 
 
@@ -203,16 +218,7 @@ updateShopping(collType, data){
   )
 }
 
-updateShoppingCart(collType, data){
-  let fakeresponse = true;
-  return Observable.create(
-    observer => {
-      setTimeout(() =>{
-        observer.next(fakeresponse)
-      },2000)
-    }
-  )
-}
+
 
 
 }
