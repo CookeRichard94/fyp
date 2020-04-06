@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BackendService} from './../../services/backend.service'
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-header',
@@ -13,21 +14,27 @@ export class HeaderComponent implements OnInit {
 
   counter = 0;
   UserStatusColour = "warn";
-  constructor(private backendservice: BackendService) { }
+  constructor(private backend_Service: BackendService) { }
 
   ngOnInit(): void {
-    this.counter = 0;
-    this.counter = this.backendservice.getCartTotal().subscribe(
-      (res) => {
-        this.counter = res;
-      }
-    );
+    this.getCartTotal();
     
-    this.backendservice.isUserLoggedIn().subscribe(
+    this.backend_Service.isUserLoggedIn().subscribe(
       (res) => {
         this.UserStatusColour = res ? "success" : "war";
       }
     );
+  }
+
+  getCartTotal(){
+    this.counter = 0;
+    this.backend_Service.getCart('cart').subscribe((res) => {
+      
+      for(let i = 0; i < res.length; i++) {
+        this.counter = this.counter + i;
+      }
+      return this.counter;
+    });
   }
 
 }

@@ -203,16 +203,6 @@ export class BackendService {
 
 
   //FAKE -- DELETE WHEN NEW CREATED
-  getCartTotal(){
-     let fakeresponse = "6";
-     return Observable.create(
-       observer => {
-         setTimeout(() =>{
-           observer.next(fakeresponse)
-         },2000)
-       }
-     )
-  } 
 
 
 updateShopping(collType, data){
