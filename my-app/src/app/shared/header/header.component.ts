@@ -13,26 +13,25 @@ export class HeaderComponent implements OnInit {
   @Input() iconTitle: string;
 
   counter = 0;
+  count = 0;
   UserStatusColour = "warn";
   constructor(private backend_Service: BackendService) { }
 
   ngOnInit(): void {
-    this.getCartTotal();
-    
     this.backend_Service.isUserLoggedIn().subscribe(
       (res) => {
         this.UserStatusColour = res ? "success" : "war";
       }
     );
+
+    this.getCartTotal(); 
   }
 
   getCartTotal(){
     this.counter = 0;
     this.backend_Service.getCart('cart').subscribe((res) => {
+      this.counter = res.length;
       
-      for(let i = 0; i < res.length; i++) {
-        this.counter = this.counter + i;
-      }
       return this.counter;
     });
   }
