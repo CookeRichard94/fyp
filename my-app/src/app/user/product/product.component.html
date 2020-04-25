@@ -21,11 +21,30 @@
             <mat-list-item *ngFor="let item of members | async" (click)="showDetails(item);toggle=!toggle">
                 <h4 mat-line>
                     {{item.name}}
-                    <mat-icon mat-list-icon>pageview</mat-icon>
+                <mat-icon mat-list-icon>pageview</mat-icon>
                 </h4>
                 <p class="label-hint" mat-line> {{item.category }} / {{item.scategory }}</p>
             </mat-list-item>
         </mat-list>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of members | async">
+                    <td>{{item.name}}</td>
+                    <td>{{item.category}}</td>
+                    <td>{{item.scategory}}</td>
+                    <button class="button" (click)="showDetails(item);toggle=!toggle">View</button>
+                </tr>
+            </tbody>
+        </table>
 
     </mat-card-content>
     <ng-template #showProductDetails>
