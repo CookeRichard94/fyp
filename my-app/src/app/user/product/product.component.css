@@ -3,12 +3,21 @@
 }
 
 .button {
-  background-color: #4CAF50; /* Green */
+  background-color: rgb(27, 62, 216); 
   border: none;
   color: white;
-  padding: 10px 16px;
+  padding: 10px 22px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 12px;
+  font-size: 15px;
+}
+
+.table {
+  border: black;
+  width:100%;
+}
+
+.search {
+  align-self: baseline;
 }

@@ -127,6 +127,7 @@ export class BackendService {
 
   deleteProductDoc(coll: string, docId: string){
    
+    console.log("hello");
     return this.afs.collection(this.getCollectionUrl(coll)).doc(docId).delete();
   }
 

@@ -30,7 +30,6 @@ export class ProductComponent implements OnInit, OnDestroy {
   getData()
   {
     this.members = this.backend_Service.getProducts('product');
-    console.log("yes");
   }
 
   getFilterData(filters)

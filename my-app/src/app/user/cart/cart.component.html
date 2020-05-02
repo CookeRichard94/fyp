@@ -1,15 +1,27 @@
+<app-header pageTitle = "Cart" iconTitle = "shopping_cart"></app-header>
+
 <mat-card>
 
 <mat-card-content *ngIf="toggle else showProductDetails">
-    <mat-list>
-        <mat-list-item *ngFor="let item of members | async" (click)="showDetails(item);toggle=!toggle">
-            <h4 mat-line>
-                {{item.name}}
-                <mat-icon mat-list-icon>pageview</mat-icon>
-            </h4>
-            <p class="label-hint" mat-line> {{item.category }} / {{item.scategory }}</p>
-        </mat-list-item>
-    </mat-list>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of members | async">
+                    <td>{{item.name}}</td>
+                    <td>{{item.category}}</td>
+                    <td><b>€</b> {{item.price}}</td>
+                    <td><button class="button" (click)="showDetails(item);toggle=!toggle">View</button>
+                    <button class="button2" (click)="removeFromCart(item._id)">Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
     <button>Place Order</button>
 </mat-card-content>
 <ng-template #showProductDetails>

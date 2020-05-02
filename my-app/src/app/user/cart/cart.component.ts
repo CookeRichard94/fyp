@@ -41,7 +41,15 @@ export class CartComponent implements OnInit, OnDestroy {
   getPic(picId) {
     const ref = this.storage.ref(picId);
     this.profileUrl = ref.getDownloadURL();
-}
+  }
+
+  removeFromCart(id)
+  {
+    if (confirm("Are you sure want to remove this product?")){
+      this.dataLoading = true;
+      this.backend_Service.deleteProductDoc('cart', id)
+    }
+  }
 
 ngOnDestroy() {
   if (this.querySubscription) {

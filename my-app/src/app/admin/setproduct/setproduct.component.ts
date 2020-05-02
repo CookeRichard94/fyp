@@ -29,7 +29,7 @@ export class SetproductComponent implements OnInit, OnDestroy {
   showHostSelfie = false;
   profileUrl: Observable<string | null>;
   
-  displayedColumns = ['category', 'scategory', 'name', 'price', '_id'];
+  displayedColumns = ['category', 'name', 'price', '_id'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
