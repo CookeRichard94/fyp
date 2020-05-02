@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BackendService } from '../../Services/backend.service';
 import { Observable, of } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -20,7 +21,7 @@ export class CartComponent implements OnInit, OnDestroy {
   myDocData;
   members: Observable<any>;
 
-  constructor(private backend_Service: BackendService, private storage: AngularFireStorage) { }
+  constructor(private backend_Service: BackendService, private storage: AngularFireStorage, private router: Router) { }
 
   ngOnInit(): void {
     this.getData();
@@ -46,8 +47,7 @@ export class CartComponent implements OnInit, OnDestroy {
   removeFromCart(id)
   {
     if (confirm("Are you sure want to remove this product?")){
-      this.dataLoading = true;
-      this.backend_Service.deleteProductDoc('cart', id)
+      this.backend_Service.deleteProductDoc('cart', id);
     }
   }
 

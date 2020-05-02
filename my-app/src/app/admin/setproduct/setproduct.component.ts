@@ -157,6 +157,7 @@ export class SetproductComponent implements OnInit, OnDestroy {
     const ref = this.storage.ref(picId);
     this.profileUrl = ref.getDownloadURL();
   }
+  
   deleteProductPic(docId){
     if (confirm("Are you sure want to delete this picture ?")) {
     this.backend_Service.deleteProductPic('product',docId);

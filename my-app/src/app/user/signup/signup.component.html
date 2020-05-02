@@ -22,16 +22,19 @@
         <mat-form-field class="example-full-width">
           <input matInput placeholder="email" name="email" #email="ngModel" ngModel required email>
         </mat-form-field>
+      <br/>
         <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">Please enter a valid email.</mat-error>
         <mat-form-field class="example-full-width">
           <input matInput type="password" placeholder="Choose app password" name="password" #password="ngModel" ngModel required minlength="5"
             maxlength="30">
         </mat-form-field>
+      <br/>
         <span *ngIf="password.invalid && (password.dirty || password.touched)">
           <mat-error *ngIf="password.errors['required']">Password is Required.</mat-error>
           <mat-error *ngIf="password.errors['minlength']">Password can't be less than 5 characters.</mat-error>
           <mat-error *ngIf="password.errors['maxlength']">Password can't be more than 30 characters.</mat-error>
         </span>
+      <br/>
       </mat-card-content>
     </form>
   </mat-card>

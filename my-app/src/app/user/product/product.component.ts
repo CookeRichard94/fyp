@@ -25,6 +25,7 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getData();
+    
   }
 
   getData()

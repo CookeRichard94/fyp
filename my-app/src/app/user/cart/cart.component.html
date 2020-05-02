@@ -18,11 +18,11 @@
                     <td>{{item.category}}</td>
                     <td><b>€</b> {{item.price}}</td>
                     <td><button class="button" (click)="showDetails(item);toggle=!toggle">View</button>
-                    <button class="button2" (click)="removeFromCart(item._id)">Remove</button></td>
+                    <button class="button2" (click)="removeFromCart(item._id2)">Remove</button></td>
                 </tr>
             </tbody>
         </table>
-    <button>Place Order</button>
+    <button class="button3">Place Order</button>
 </mat-card-content>
 <ng-template #showProductDetails>
     <b>{{ myDocData.name }}</b>
@@ -32,9 +32,7 @@
     </span>
     <br/>
     <img [src]="profileUrl | async" width="300" height="300" /> 
-    <p class="label-go" mat-line> {{myDocData.sname }}  {{myDocData.lname }}</p>
-    <p class="label-hint" mat-line> {{myDocData.descr }}</p>
-    <p class="label-go" mat-line> Color: {{myDocData.color }} Size: {{myDocData.size }} Price: {{myDocData.price }} </p>
-    <p class="label-error" mat-line> Shipping: {{myDocData.shipping }} Discount: {{myDocData.discount }} </p>
+    <p class="label-hint" mat-line><i> {{myDocData.descr }}</i></p>
+    <p class="label-go" mat-line> <b>Price:</b> € {{myDocData.price }} </p>
 </ng-template>
 </mat-card>

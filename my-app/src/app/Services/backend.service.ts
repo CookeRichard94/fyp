@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -127,7 +128,8 @@ export class BackendService {
 
   deleteProductDoc(coll: string, docId: string){
    
-    console.log("hello");
+    console.log("ID: " + docId);
+    console.log("COLL: " + coll);
     return this.afs.collection(this.getCollectionUrl(coll)).doc(docId).delete();
   }
 
@@ -177,6 +179,7 @@ export class BackendService {
     var docRef = this.afs.collection(this.getCollectionUrl(coll)).doc(item.id);
     return docRef.set({
         ...data,
+        _id2: id,
         author: this.fAuth.auth.currentUser.uid,
         authorEmail: this.fAuth.auth.currentUser.email,
         updatedAt: timestamp,
