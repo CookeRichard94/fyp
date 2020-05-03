@@ -14,6 +14,8 @@ export class UserComponent implements OnInit {
   errorMessage: string = "";
   dataLoading: boolean = false;
   savedChanges = false;
+  private querySubscription;
+  
 
   constructor(private backend_service: BackendService, public fAuth: AngularFireAuth, private router: Router) { }
 
@@ -22,7 +24,17 @@ export class UserComponent implements OnInit {
   }
 
   onSubmit(formData){
-
+    this.dataLoading = true;
+      this.querySubscription = this.backend_service.setProfile('users',formData)
+        .then((res) => {
+          this.savedChanges =true;
+          this.dataLoading = true;
+        })
+        .catch(error => {
+          this.error = true;
+          this.errorMessage = error.message;
+          this.dataLoading = false;
+        })
   }
 
   logout(){

@@ -54,19 +54,8 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.dataLoading = true;
     let data = item;
 
-    this.querySubscription = this.backend_Service.updateShopping('iterests', data)
-    .subscribe(members => {
-      this.dataLoading = false;
-      this.counter = 0;
-      this.savedChanges = false;
-    },
-    (error) => {
-      this.error  =true;
-      this.errorMessage = error.message;
-      this.dataLoading = false;
-    },
-    () =>{this.error =false; this.dataLoading = false;}
-    );
+   
+    
 }
 
 countProducts(filter) {

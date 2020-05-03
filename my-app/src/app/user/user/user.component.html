@@ -34,24 +34,30 @@
             </span>
         </mat-card-content>
     </form>
-</mat-card>
-<ng-template #showSavedChanges>
-    <br>
-    <br>
-    <br>
-    <mat-error>Your information has been update. Please log back in.</mat-error>
-    <br>
-    <br>
-    <br>
-    <mat-card-actions align="start">
-        <button type="button" (click)="savedChanges=false;routeLoginPage();" mat-raised-button-color="accent">Close</button>
-    </mat-card-actions>
-</ng-template>-->
+</mat-card>-->
+
 <html>
     <mat-card *ngIf="!savedChanges else showSavedChanges">
         <form #formData='ngForm'>
             <button type="button"(click)="logout()" mat-raise-button-color="primary">Logout</button>
             <button type="button"(click)="onSubmit(formData.value)" [disabled]="!formData.valid" mat-raise-button-color="primary">Submit</button>
+            <br>
+            <br>
+            <mat-form-field>
+                <input matInput placeholder="First Name" name="firstName" id="firstName" ngModel required minlength="3" maxlength="15">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput placeholder="Surname" name="surname" id="surname" ngModel required minlength="3" maxlength="15">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <textarea matInput placeholder="Address" name="address" id="address" ngModel required minlength="20"></textarea>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input type="number" placeholder="Age" name="age" id="age" ngModel  pattern="[0-9]+">
+            </mat-form-field>
         </form>
     </mat-card>
     <ng-template #showSavedChanges>

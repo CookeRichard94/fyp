@@ -196,31 +196,21 @@ export class BackendService {
     
 }
 
-
-
-
-
-
-
-
-
-
-
-  //FAKE -- DELETE WHEN NEW CREATED
-
-
-updateShopping(collType, data){
-  let fakeresponse = true;
-  return Observable.create(
-    observer => {
-      setTimeout(() =>{
-        observer.next(fakeresponse)
-      },2000)
-    }
-  )
-}
-
-
-
+  setProfile(coll: string, data: any)
+  {
+    const id = this.afs.createId();
+    const item = {id, name};
+    const timestamp = this.timeStamp
+    var docRef = this.afs.collection(this.getCollectionUrl(coll)).doc(item.id);
+    return docRef.set({
+      ...data,
+      _id2: id,
+      author: this.fAuth.auth.currentUser.uid,
+      authorEmail: this.fAuth.auth.currentUser.email,
+      updatedAt: timestamp,
+      createdAt: timestamp,
+      delete_flag: "N",
+  });
+  }
 
 }
