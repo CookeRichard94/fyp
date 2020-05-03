@@ -7,3 +7,24 @@
     background-color: red;
     color: #fff;
 }
+
+.navbar {
+    background-color: rgb(51, 49, 49);
+    height: 80px;
+}
+
+.icon {
+    color: rgb(204, 201, 201);
+}
+
+.title {
+    color: rgb(204, 201, 201);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+.shop {
+    color: rgb(204, 201, 201);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 28px;
+}

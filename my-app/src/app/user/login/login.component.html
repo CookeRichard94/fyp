@@ -1,4 +1,5 @@
 <app-header pageTitle = "Login" iconTitle = "account_circle"></app-header>
+<html>
 <mat-card>
     <div *ngIf="fAuth.user | async as user; else showLogin">
         <button type="button" routerLink="/product" mat-raised-button-color="accent">Continue Shopping</button>
@@ -44,3 +45,4 @@
           </mat-card-actions>
     </ng-template>
 </mat-card> 
+</html>

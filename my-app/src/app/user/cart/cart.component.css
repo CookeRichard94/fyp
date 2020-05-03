@@ -7,6 +7,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 15px;
+    border-radius: 40%;
   }
 
   .button2 {
@@ -18,15 +19,23 @@
     text-decoration: none;
     display: inline-block;
     font-size: 15px;
+    border-radius: 40%;
   }
 
   .button3 {
     background-color: green ; 
     border: none;
     color: white;
-    padding: 10px 22px;
+    padding: 14px 40px;
+    width: 250px;
+    height: 100px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 15px;
+    font-size: 20px;
+    border-radius: 50%;
+  }
+
+  .space {
+    padding: 0px 10px;
   }

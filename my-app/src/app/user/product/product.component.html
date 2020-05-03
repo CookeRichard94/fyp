@@ -20,7 +20,7 @@
     <mat-card-content *ngIf="toggle else showProductDetails">
         <table class="table">
             <thead>
-                <tr>
+                <tr class="table">
                     <th>Name</th>
                     <th>Category</th>
                     <th>Price</th>
@@ -51,7 +51,7 @@
 
         <mat-error *ngIf="savedChanges">
             <br/>
-            <br/> Shopping cart is updated.
+            <br/> Item added to cart
             <mat-icon (click)="savedChanges=!savedChanges" color="accent">close</mat-icon>
             <span class="med-spacer"></span>
             <br/>

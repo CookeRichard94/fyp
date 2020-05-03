@@ -1,18 +1,20 @@
-<nav class="navbar navbar-dark bg-primary">
+<nav class="navbar">
     <button mat-mini-fab color="warn" >
       <mat-icon>dashboard</mat-icon>
     </button>
     <span class="example-icon"></span>
-    <mat-icon>{{iconTitle}}</mat-icon>
+    <mat-icon class="icon">{{iconTitle}}</mat-icon>
     <span class="example-icon"></span>
-    <span class="navbar-brand mb-0 h1">{{pageTitle}}</span>
+    <span class="title">{{pageTitle}}</span>
     <span class="example-spacer"></span>
-    <mat-icon routerLink="/product">shop</mat-icon> 
+    <p class="shop">BuyIT</p>
+    <span class="example-spacer"></span>
+    <mat-icon class="icon" routerLink="/product">shop</mat-icon> 
     <span class="nav-icon"></span>
     <mat-icon [color]="UserStatusColour" routerLink="/settings">account_box</mat-icon>
     <span class="example-icon"></span>
-    <mat-icon matBadge="{{counter}}" matBadgeColor="warn" matBadgePosition="before" routerLink="/cart">shopping_cart</mat-icon>
+    <mat-icon class="icon" matBadge="{{counter}}" matBadgeColor="warn" matBadgePosition="before" routerLink="/cart">shopping_cart</mat-icon>
     <span class="nav-icon"></span>
-    <mat-icon routerLink="/about">info</mat-icon> 
-    <mat-icon routerLink="/admin">settings</mat-icon>
+    <mat-icon class="icon" routerLink="/about">info</mat-icon> 
+    <mat-icon class="icon" routerLink="/admin">settings</mat-icon>
   </nav>

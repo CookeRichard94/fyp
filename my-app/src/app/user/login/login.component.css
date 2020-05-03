@@ -1,3 +1,7 @@
 mat-chip{
     max-width: 200px;
 }
+
+html {
+    height: 100%;
+}
