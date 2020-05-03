@@ -10,7 +10,7 @@
                     <span class="example-form"></span>
                     <span class="example-form"></span>
                     <span matTooltip="Show Results">
-                        <mat-icon color="primary" (click)="toggle('resMode');getData;">cached</mat-icon>
+                        <mat-icon color="primary" (click)="toggle('resMode');getData();">cached</mat-icon>
                     </span>
                 </mat-card-actions>
                 <br>
@@ -123,20 +123,32 @@
     </div>
     <div class="example-container mat-elevation-z8">
         <mat-table [dataSource]="dataSource" matSort>
-            <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+            <ng-container matColumnDef="author">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>UID</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.author}} </mat-cell>
             </ng-container>
-            <ng-container matColumnDef="_id">
-                <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
                 <mat-cell *matCellDef="let row">
-                    {{row._id}}
+                    {{row.firstName}}
                     <span class="example-spacer"></span>
-                    <span matTooltip="Delete">
-                        <button mat-icon-button (click)="deleteDoc(row._id)">
-                            <mat-icon color="warn">delete</mat-icon>
-                        </button>
-                    </span>
+                    
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="surname">
+                <mat-header-cell *matHeaderCellDef> Surname </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    {{row.surname}}
+                    <span class="example-spacer"></span>
+                    
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef> E-mail </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    {{row.authorEmail}}
+                    <span class="example-spacer"></span>
+                    
                 </mat-cell>
             </ng-container>
 

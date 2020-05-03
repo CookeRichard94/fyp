@@ -26,7 +26,7 @@ export class AdminusersComponent implements OnInit {
   takeHostSelfie = false;
   showHostSelfie = false;
   
-  displayedColumns = ['name', '_id'];
+  displayedColumns = ['author', 'firstName', 'surname', 'email'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -49,7 +49,7 @@ export class AdminusersComponent implements OnInit {
   getData()
   {
     this.dataLoading = true;
-      this.querySubscription = this.backend_Service.getProducts('order')
+      this.querySubscription = this.backend_Service.getProducts('users')
         .subscribe(members => {
           this.members = members;
           this.dataSource = new MatTableDataSource(members);
@@ -149,7 +149,7 @@ export class AdminusersComponent implements OnInit {
   {
     if (confirm("Do you want to delete this product ?")){
     this.dataLoading = true;
-      this.querySubscription = this.backend_Service.deleteProductDoc('order', docId)
+      this.querySubscription = this.backend_Service.deleteProductDoc('users', docId)
       .then((res) => {
         this.savedChanges =true;
         this.dataLoading = true;

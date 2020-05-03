@@ -74,8 +74,6 @@ export class SetproductComponent implements OnInit, OnDestroy {
           this.errorMessage = error.message;
           this.dataLoading = false;
         })
-
-
   }
         
 
