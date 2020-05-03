@@ -38,6 +38,7 @@ export class AdminusersComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.members);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.getData();
   }
 
   toggle(filter?) {
@@ -65,37 +66,7 @@ export class AdminusersComponent implements OnInit {
         );
   }
 
-  setData(formData)
-  {
-    this.dataLoading = true;
-      this.querySubscription = this.backend_Service.setProducts('order',formData)
-      .then((res) => {
-        this.savedChanges =true;
-        this.dataLoading = true;
-      })
-      .catch(error => {
-        this.error = true;
-        this.errorMessage = error.message;
-        this.dataLoading = false;
-      })
-  }
-        
-
-  updateData(formData)
-  {
-    this.dataLoading = true;
-      this.querySubscription = this.backend_Service.updateProducts('order',formData)
-      .then((res) => {
-        this.savedChanges =true;
-        this.dataLoading = true;
-      })
-      .catch(error => {
-        this.error = true;
-        this.errorMessage = error.message;
-        this.dataLoading = false;
-      })
-
-  }
+  
 
   //data table results
   applyFilter(filterValue: String){
@@ -106,72 +77,7 @@ export class AdminusersComponent implements OnInit {
     }
   }
 
-  getFilterData(filters)
-  {
-    this.dataLoading = true;
-      this.querySubscription = this.backend_Service.getFilterProducts('order', filters)
-        .subscribe(members => {
-          this.members = members;
-          this.dataSource = new MatTableDataSource(members);
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
-        },
-        (error) => {
-          this.error  =true;
-          this.errorMessage = error.message;
-          this.dataLoading = false;
-        },
-        () =>{this.error =false; this.dataLoading = false;}
-        );
-  }
-
-  getDoc(docId)
-  {
-    this.dataLoading = true;
-      this.querySubscription = this.backend_Service.getProductDoc('order', docId)
-        .subscribe(res => {
-         if(res)
-         {
-          this.myDocData = res;
-          this.toggle('editMode');
-         }
-        },
-        (error) => {
-          this.error  =true;
-          this.errorMessage = error.message;
-          this.dataLoading = false;
-        },
-        () =>{this.error =false; this.dataLoading = false;}
-        );
-  }
-
-  deleteDoc(docId)
-  {
-    if (confirm("Do you want to delete this product ?")){
-    this.dataLoading = true;
-      this.querySubscription = this.backend_Service.deleteProductDoc('users', docId)
-      .then((res) => {
-        this.savedChanges =true;
-        this.dataLoading = true;
-        this.toggle("searchMode");
-      })
-      .catch(error => {
-        this.error = true;
-        this.errorMessage = error.message;
-        this.dataLoading = false;
-      })
-      }
-  }
-
-  getPic(picId)
-  {
-
-  }
-
-  deleteProductPic(docId)
-  {
-
-  }
+  
 
   ngOnDestroy()
   {
