@@ -1,5 +1,6 @@
 <app-header pageTitle = "Cart" iconTitle = "shopping_cart"></app-header>
 
+<html>
 <mat-card>
 
 <mat-card-content *ngIf="toggle else showProductDetails">
@@ -22,7 +23,15 @@
                 </tr>
             </tbody>
         </table>
+        <br/>
+        <p><b>
+            Total Price: € {{total}}
+            </b>
+        </p>
+        <br/>
     <button class="button3">Place Order</button>
+    <br/>
+    
 </mat-card-content>
 <ng-template #showProductDetails>
     <b>{{ myDocData.name }}</b>
@@ -36,3 +45,4 @@
     <p class="label-go" mat-line> <b>Price:</b> € {{myDocData.price }} </p>
 </ng-template>
 </mat-card>
+</html>

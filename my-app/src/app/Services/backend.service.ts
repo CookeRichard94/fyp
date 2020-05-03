@@ -155,7 +155,7 @@ export class BackendService {
 
   createUser(data){
   if (environment.database == 'firebase') {
-
+    
     return this.fAuth.auth.createUserWithEmailAndPassword(data.value.email, data.value.password);
     }
   }

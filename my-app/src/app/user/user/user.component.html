@@ -6,9 +6,7 @@
             </mat-card-title>
             <mat-error *ngIf="error">Your authentication is invalid, please logout and log in again. Error: {{ errorMessage}}</mat-error>
             <mat-card-actions align="start">
-                <button type="button"(click)="onSubmit(formData.value)" [disabled]="!formData.valid" mat-raise-button-color="primary">Hello</button>
                 <button type="button"(click)="getUser()" mat-raise-button-color="primary">Refresh</button>
-                <button type="button"(click)="logout()" mat-raise-button-color="primary">Logout</button>
             </mat-card-actions>
             <mat-form-field class="example-form">
                 <input matInput placeholder="name" name="name" #name="ngModel" [ngModel]="this.data?.name" ngModel 
@@ -49,3 +47,23 @@
         <button type="button" (click)="savedChanges=false;routeLoginPage();" mat-raised-button-color="accent">Close</button>
     </mat-card-actions>
 </ng-template>-->
+<html>
+    <mat-card *ngIf="!savedChanges else showSavedChanges">
+        <form #formData='ngForm'>
+            <button type="button"(click)="logout()" mat-raise-button-color="primary">Logout</button>
+            <button type="button"(click)="onSubmit(formData.value)" [disabled]="!formData.valid" mat-raise-button-color="primary">Submit</button>
+        </form>
+    </mat-card>
+    <ng-template #showSavedChanges>
+        <br>
+        <br>
+        <br>
+        <mat-error>Your information has been update. Please log back in.</mat-error>
+        <br>
+        <br>
+        <br>
+        <mat-card-actions align="start">
+            <button type="button" (click)="savedChanges=false;routeLoginPage();" mat-raised-button-color="accent">Close</button>
+        </mat-card-actions>
+    </ng-template>
+</html>

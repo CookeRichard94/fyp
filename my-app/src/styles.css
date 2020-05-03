@@ -19,8 +19,7 @@
     height:auto;
  }
 
- html, body {
-  min-height: 100vh;
-  height: auto;
-  margin: 0;
-}
+ body { margin: 0 5%; }
+
+ html, body { height: 100%; }
+ body { margin: 0; font-family: 'Roboto', sans-serif; }

@@ -20,11 +20,13 @@ export class CartComponent implements OnInit, OnDestroy {
   profileUrl: Observable<string | null>;
   myDocData;
   members: Observable<any>;
+  total = 0;
 
   constructor(private backend_Service: BackendService, private storage: AngularFireStorage, private router: Router) { }
 
   ngOnInit(): void {
     this.getData();
+    this.getCartTotal();
   }
 
   getData()
@@ -49,6 +51,17 @@ export class CartComponent implements OnInit, OnDestroy {
     if (confirm("Are you sure want to remove this product?")){
       this.backend_Service.deleteProductDoc('cart', id);
     }
+  }
+
+  getCartTotal()
+  {
+    this.backend_Service.getCart('cart').subscribe((res) => {
+      this.total = 0;
+      for(let i = 0; i < res.length; i++) {
+        this.total = this.total + res[i]['price'];
+      }
+      return this.total;
+    });
   }
 
 ngOnDestroy() {
