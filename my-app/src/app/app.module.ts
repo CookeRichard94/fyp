@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,8 +31,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CommonModule } from '@angular/common';
 import { SignupComponent } from './user/signup/signup.component';
 import { UploadComponent } from './shared/upload/upload.component';
-import {FileSizePipe} from './shared/upload/filesize.pipe';
-import {UploadDirective} from './shared/upload/upload.directive';
+import { FileSizePipe } from './shared/upload/filesize.pipe';
+import { UploadDirective } from './shared/upload/upload.directive';
+import { StarReviewComponent } from './star-review/star-review.component';
+import { StarService } from './Services/star.service';
 
 
 @NgModule({
@@ -57,7 +59,8 @@ import {UploadDirective} from './shared/upload/upload.directive';
     SignupComponent,
     UploadComponent,
     FileSizePipe,
-    UploadDirective
+    UploadDirective,
+    StarReviewComponent
 
   ],
   imports: [
@@ -74,7 +77,7 @@ import {UploadDirective} from './shared/upload/upload.directive';
     AngularFireModule.initializeApp(environment.firebase, 'fyp'),
     CommonModule
   ],
-  providers: [],
+  providers: [StarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

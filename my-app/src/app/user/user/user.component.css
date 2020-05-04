@@ -17,4 +17,9 @@
     border-width: 2px;
     background-color: coral;
     width: 600px;
+    height: 600px;
+    text-align: center;
+    display: block;
+    margin:0 auto;
 }
+

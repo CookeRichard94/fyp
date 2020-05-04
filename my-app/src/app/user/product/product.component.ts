@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BackendService } from '../../Services/backend.service';
 import { Observable, of } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { AngularFireAuth} from '@angular/fire/auth';
 
 @Component({
   selector: 'app-product',
@@ -20,12 +21,16 @@ export class ProductComponent implements OnInit, OnDestroy {
   profileUrl: Observable<string | null>;
   myDocData;
   members: Observable<any>;
+  userId;
+  product: Observable<any>;
 
-  constructor(private backend_Service: BackendService, private storage: AngularFireStorage) { }
+  constructor(private backend_Service: BackendService, private storage: AngularFireStorage, public fAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
     this.getData();
-    
+    this.userId = this.fAuth.auth.currentUser.uid;
+    console.log(this.userId);
+    console.log(this.product);
   }
 
   getData()
@@ -53,9 +58,6 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.getPic(item.path);
     this.dataLoading = true;
     let data = item;
-
-   
-    
 }
 
 countProducts(filter) {

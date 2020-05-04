@@ -39,15 +39,21 @@
 
     </mat-card-content>
     <ng-template #showProductDetails>
-        <b>{{ myDocData.name }}</b>
-        <span class="small-spacer"></span>
         <span matTooltip="Show All Products">
             <mat-icon color="primary" (click)="toggle=!toggle">backspace</mat-icon>
         </span>
+        <br>
+        <span class="small-spacer"></span>
+        <b>{{ myDocData.name }}</b>
         <br/>
         <img [src]="profileUrl | async" width="300" height="300" /> 
         <p class="label-hint" mat-line> {{myDocData.descr }}</p>
         <p class="label-go" mat-line> <b>Price:</b> € {{myDocData.price }} </p>
+
+        <star-review [productId]="myDocData._id" [userId]="userId"></star-review>
+
+        <br>
+        <br>
 
         <mat-error *ngIf="savedChanges">
             <br/>
