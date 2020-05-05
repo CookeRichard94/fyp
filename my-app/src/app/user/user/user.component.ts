@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+
+  //Variables
   userLoggedIn: boolean = true;
   error: boolean = false;
   errorMessage: string = "";
@@ -20,9 +22,11 @@ export class UserComponent implements OnInit {
   constructor(private backend_service: BackendService, public fAuth: AngularFireAuth, private router: Router) { }
 
   ngOnInit(): void {
+    //Get user data
     this.getUser();
   }
 
+  // Submit the form data as a parameter to the setprofile method to add to user collection
   onSubmit(formData){
     this.dataLoading = true;
       this.querySubscription = this.backend_service.setProfile('users',formData)
@@ -37,8 +41,10 @@ export class UserComponent implements OnInit {
         })
   }
 
+  // Logs user out 
   logout(){
     this.dataLoading = true;
+
     return this.backend_service.logout().then((success)=>
     {
       this.userLoggedIn=false;
@@ -53,6 +59,7 @@ export class UserComponent implements OnInit {
 
   }
 
+  //Routes to login page using router
   routeLoginPage()
   {
     this.router.navigate(['/login']);

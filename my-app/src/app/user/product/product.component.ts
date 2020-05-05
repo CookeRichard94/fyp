@@ -11,6 +11,7 @@ import { AngularFireAuth} from '@angular/fire/auth';
 })
 export class ProductComponent implements OnInit, OnDestroy {
 
+  // Variables
   toggle : boolean = true;
   savedChanges = false;
   error: boolean = false;
@@ -27,17 +28,24 @@ export class ProductComponent implements OnInit, OnDestroy {
   constructor(private backend_Service: BackendService, private storage: AngularFireStorage, public fAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
+    // Gets the products list
     this.getData();
+
+    // Gets the users unique id
     this.userId = this.fAuth.auth.currentUser.uid;
+
+    //Outputting info to console to assure the right infro is passed
     console.log(this.userId);
     console.log(this.product);
   }
 
+  // Calls all the data in the product collection of the database
   getData()
   {
     this.members = this.backend_Service.getProducts('product');
   }
 
+  // Filters the products dispalayed 
   getFilterData(filters)
   {
     if (filters) {
@@ -47,11 +55,13 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
   }
 
+  // Returns the picture associated with doc and passes path to variable
   getPic(picId) {
     const ref = this.storage.ref(picId);
     this.profileUrl = ref.getDownloadURL();
 }
 
+//Show the dtails of a sngle item
   showDetails(item) {
     this.counter = 0;
     this.myDocData = item;
@@ -60,6 +70,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     let data = item;
 }
 
+// Counter for quantity to be added to cart
 countProducts(filter) {
   if (filter == "add") {
       this.counter = this.counter + 1;
@@ -70,6 +81,7 @@ countProducts(filter) {
   }
 }
 
+// Adds the items specified to the cart along with the counter which is to act as the quantity
 addToCart(item, counter){
   this.dataLoading = true;
   let data = item;

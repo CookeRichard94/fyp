@@ -4,6 +4,8 @@ const FILE_SIZE_UNITS_LONG = ['Bytes', 'Kilobytes', 'Megabytes', 'Gigabytes', 'P
 @Pipe({
   name: 'fileSize'
 })
+
+// Adapted from: https://angular-2-training-book.rangle.io/pipes/custom_pipes
 export class FileSizePipe implements PipeTransform {
   transform(sizeInBytes: number, longForm: boolean): string {
     const units = longForm

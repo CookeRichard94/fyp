@@ -21,10 +21,12 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Routes to login page using router
   routeLoginPage (){
     this.router.navigate(['/login']);
   }
 
+  // Submits formata to be passed t backend service and act as a parameter in the creatuser method
   onSubmit(formData) {
     this.dataLoading = true;
     this.backend_Service.createUser(formData).then(

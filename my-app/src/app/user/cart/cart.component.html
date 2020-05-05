@@ -4,6 +4,7 @@
 <mat-card>
 
 <mat-card-content *ngIf="toggle else showProductDetails">
+    <!-- List all items in users cart-->
         <table class="table">
             <thead>
                 <tr>
@@ -18,22 +19,27 @@
                     <td>{{item.name}}</td>
                     <td>{{item.category}}</td>
                     <td><b>€</b> {{item.price}}</td>
+                    <!-- Lets user view single product-->
                     <td><button class="button" (click)="showDetails(item);toggle=!toggle">View</button>
                         <p class="space"></p>
+                        <!--Removes specified item from cart-->
                     <button class="button2" (click)="removeFromCart(item._id2)">Remove</button></td>
                 </tr>
             </tbody>
         </table>
         <br/>
         <p><b>
+            <!-- The total cart price-->
             Total Price: € {{total}}
             </b>
         </p>
         <br/>
+        <!--was to clear cart and add to order collection, did not worki, functionality removed-->
     <button class="button3">Place Order (Not Working)</button>
     <br/>
     
 </mat-card-content>
+<!--Template for showing individual product-->
 <ng-template #showProductDetails>
     <b>{{ myDocData.name }}</b>
     <span class="small-spacer"></span>
@@ -41,6 +47,7 @@
         <mat-icon color="primary" (click)="toggle=!toggle">backspace</mat-icon>
     </span>
     <br/>
+    <!-- src for the image of product displayed-->
     <img [src]="profileUrl | async" width="300" height="300" /> 
     <p class="label-hint" mat-line><i> {{myDocData.descr }}</i></p>
     <p class="label-go" mat-line> <b>Price:</b> € {{myDocData.price }} </p>

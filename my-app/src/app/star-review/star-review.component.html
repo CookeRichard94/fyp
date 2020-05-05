@@ -2,7 +2,7 @@
 
 {{ avgRating | async }}
 
-
+<!-- Review sections outputs user id plus rating applied to product-->
 <h3>Reviews</h3>
 <div *ngFor="let star of stars | async">
 
@@ -14,6 +14,7 @@
 <h3>Post your Review</h3>
 
 <fieldset class="rating">
+  <!--Number range from 1-5--> 
   <ng-container  *ngFor="let num of [5, 4, 3, 2, 1]">
       <!-- full star -->
       <input (click)="starHandler(num)" 

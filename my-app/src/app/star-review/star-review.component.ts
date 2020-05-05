@@ -22,15 +22,18 @@ export class StarReviewComponent implements OnInit {
   ngOnInit() {
     this.stars = this.starService.getMovieStars(this.productId)
 
+    //Averages the ratings applied to the product
     this.avgRating = this.stars.pipe(map(arr => {
       const ratings = arr.map(v => v.value)
+      //Output value or if no reviews yet output no reviews message
       return ratings.length ? ratings.reduce((total, val) => total + val) / arr.length : 'not reviewed'
     })
     )}
 
-  starHandler(value) {
-    this.starService.setStar(this.userId, this.productId, value)
-  }
+    //Send star ratings to collection in database along witht he product id and the user id
+    starHandler(value) {
+      this.starService.setStar(this.userId, this.productId, value)
+    }
 
 
 }

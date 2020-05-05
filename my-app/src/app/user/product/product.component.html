@@ -1,4 +1,5 @@
 <app-header pageTitle = "Products" iconTitle = "shopping_cart"></app-header>
+<!-- Page for displayog products-->
 <html>
 <mat-card>
     <mat-card-actions align="start">
@@ -10,6 +11,7 @@
                 <mat-icon color="warn" (click)="this.searchForm.reset();">clear</mat-icon>
             </span>
             <span class="small_spacer"></span>
+            <!-- Filter to search through products-->
             <span matToolTip="Search">
                 <mat-icon color="success" (click)="getFilterData(search.value)">search</mat-icon> 
             </span>
@@ -18,6 +20,7 @@
 
     </mat-card-actions>
     <mat-card-content *ngIf="toggle else showProductDetails">
+        <!-- Table to display a list of products-->
         <table class="table">
             <thead>
                 <tr class="table">
@@ -32,12 +35,14 @@
                     <td>{{item.name}}</td>
                     <td>{{item.category}}</td>
                     <td><b>€</b> {{item.price}}</td>
+                    <!-- Button to view a single product-->
                     <td><button class="button" (click)="showDetails(item);toggle=!toggle">View</button></td>
                 </tr>
             </tbody>
         </table>
 
     </mat-card-content>
+    <!-- Template when viewing a single product-->
     <ng-template #showProductDetails>
         <span matTooltip="Show All Products">
             <mat-icon color="primary" (click)="toggle=!toggle">backspace</mat-icon>
@@ -50,6 +55,7 @@
         <p class="label-hint" mat-line> {{myDocData.descr }}</p>
         <p class="label-go" mat-line> <b>Price:</b> € {{myDocData.price }} </p>
 
+        <!-- Review page called, passing the products id and the users id-->
         <star-review [productId]="myDocData._id" [userId]="userId"></star-review>
 
         <br>
@@ -64,10 +70,12 @@
         </mat-error>
 
         <br/>
+        <!-- For adding an item to the cart-->
         <mat-icon (click)="countProducts('remove')" color="warn">remove</mat-icon>
         {{ counter }}
         <mat-icon (click)="countProducts('add')" color="success">add</mat-icon>
         <span class="med-spacer"></span>
+        <!--Disable if the counter is less than 1-->
         <button [disabled]="counter < 1" mat-raised-button color="accent" (click)="addToCart(myDocData, counter)">Add to Cart</button>
         <br/>
     </ng-template>

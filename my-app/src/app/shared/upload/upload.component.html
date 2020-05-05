@@ -1,4 +1,5 @@
 <span *ngIf="error"><font color="red">Error</font></span>
+<!-- % of upload complete-->
 <div *ngIf="percentage | async as pct">
   <progress class="progress is-info" 
             [value]="pct" 
@@ -8,6 +9,8 @@
   <br>
   <span><font color="green">File Uploaded.</font></span>
 </div>
+
+<!-- file upload section-->
 <div class="dropzone" 
      dropZone
      (hovered)="toggleHover($event)"
@@ -26,13 +29,8 @@
         </label>
       </div>
 </div>
-<!-- Causes app to break
-    <div *ngIf="snapshot | async as snap">
-  {{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }} 
-  <button mat-raised-button color="primary" (click)="task.pause()" class="button is-warning" [disabled]="!isActive(snap)">Pause</button>
-  <button mat-raised-button color="primary" (click)="task.cancel()" class="button is-danger" [disabled]="!isActive(snap)">Cancel</button>
-  <button mat-raised-button color="primary" (click)="task.resume()" class="button is-info"   [disabled]="!(snap?.state === 'paused')">Resume</button>
-</div>-->
+
+<!-- Displays the picture-->
 <div *ngIf="downloadURL | async as url">
     <h3>Result</h3>
     <img [src]="url" width="300" height="300"><br>

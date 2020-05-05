@@ -1,20 +1,31 @@
 <nav class="navbar">
+
+  <!-- header page present throughout the application-->
+  <!-- All icons act as routers-->
     <button mat-mini-fab color="warn" >
+      <!-- dashboard icon to provide a drop down menu-->
       <mat-icon>dashboard</mat-icon>
     </button>
     <span class="example-icon"></span>
+    <!-- Icone title changes depending on the page-->
     <mat-icon class="icon">{{iconTitle}}</mat-icon>
     <span class="example-icon"></span>
+    <!-- Page title changes dependign on the page-->
     <span class="title">{{pageTitle}}</span>
     <span class="example-spacer"></span>
     <p class="shop">BuyIT</p>
     <span class="example-spacer"></span>
+    <!-- link to list of products-->
     <mat-icon class="icon" routerLink="/product">shop</mat-icon> 
     <span class="nav-icon"></span>
+    <!-- Link to account info-->
     <mat-icon [color]="UserStatusColour" routerLink="/settings">account_box</mat-icon>
     <span class="example-icon"></span>
+    <!--link to cart, plus provides indication of how many items are in a users cart-->
     <mat-icon class="icon" matBadge="{{counter}}" matBadgeColor="warn" matBadgePosition="before" routerLink="/cart">shopping_cart</mat-icon>
     <span class="nav-icon"></span>
+    <!--Link to about page-->
     <mat-icon class="icon" routerLink="/about">info</mat-icon> 
+    <!--Link to admin page, oly available if user is admin-->
     <mat-icon class="icon" routerLink="/admin">settings</mat-icon>
   </nav>

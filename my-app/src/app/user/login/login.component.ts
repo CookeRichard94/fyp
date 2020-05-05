@@ -9,6 +9,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class LoginComponent implements OnInit {
 
+  //Variables
   userLoggedIn: boolean = true;
   error: boolean = false;
   errorMessage: string = "";
@@ -17,18 +18,24 @@ export class LoginComponent implements OnInit {
   constructor(private backend_service: BackendService, public fAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
+    //Check if user is signed in
     this.getAuthStatus();
   }
 
+  //Login method, form data is an optioal input as google login does not require it
   login(loginType, formData?)
   {
     this.dataLoading=true;
+
+    //Returns a login
     return this.backend_service.login(loginType, formData);
   }
 
+  //Logs user out
   logout()
   {
     this.dataLoading = true;
+    //Uses firebase built in method to log user out
     return this.backend_service.logout().then((success)=>
     {
       this.userLoggedIn=false;
@@ -36,6 +43,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  //Checks the authentication status of the user
   getAuthStatus()
   {
     this.dataLoading = true;
@@ -43,6 +51,7 @@ export class LoginComponent implements OnInit {
     {
       if(result.credential)
       {
+        //If the access token isnt empty the user is not logged in
         console.log(result.credential)
         if(result.credential["accessToken"] != "")
         {

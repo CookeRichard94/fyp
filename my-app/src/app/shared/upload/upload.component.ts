@@ -12,8 +12,11 @@ import { BackendService } from '../../services/backend.service';
 })
 export class UploadComponent {
 
+  //Input variables
   @Input() fileUrl: string;
   @Input() docId: string;
+
+  //Other variables
   task: AngularFireUploadTask;
   percentage: Observable<number>;
   snapshot: Observable<any>;
@@ -21,14 +24,17 @@ export class UploadComponent {
   isHovering: boolean;
   error: boolean = false;
 
+  //import firestorage and backendservice
   constructor(private storage: AngularFireStorage, private backend_Service: BackendService) { }
 
   toggleHover(event: boolean) {
     this.isHovering = event;
   }
 
+  //method to upload image
   startUpload(event: FileList) {
     const file = event.item(0);
+    //if the file is an image then continue upload, else output error
     if (file.type.split('/')[0] !== 'image') {
         this.error = true;
         console.log('unsupporterd file type');
@@ -36,15 +42,19 @@ export class UploadComponent {
     } else {
         this.error = false;
     }
+
+    // Path to pass the image to the doc
     const filePath = 'fyp/ecommerce/' + this.fileUrl + '/' + new Date().getTime();
     
       const task = this.storage.upload(filePath, file);
       this.percentage = task.percentageChanges();
 
+      //Pass the image to the associated doc via the doc Id
       this.task = this.storage.upload(filePath, file);
       this.percentage = this.task.percentageChanges();
       this.task.snapshotChanges().pipe(
           finalize(() => {
+            //calling setpic to finalize upload
           return this.backend_Service.setProductPic(filePath, this.fileUrl, this.docId);
           })
         ).subscribe();
