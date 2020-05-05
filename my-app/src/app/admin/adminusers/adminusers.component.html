@@ -1,9 +1,13 @@
+<!-- Page for admins to view users who have submitted details on the site-->
+
 <div class="example-header">
+    <!-- Search Filter-->
         <mat-form-field>
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Recent Results">
         </mat-form-field>
     </div>
     <div class="example-container mat-elevation-z8">
+        <!-- Mat table that has headers Uid, firstname, surname and email -->
         <mat-table [dataSource]="dataSource" matSort>
             <ng-container matColumnDef="author">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>UID</mat-header-cell>
@@ -13,16 +17,14 @@
                 <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
                 <mat-cell *matCellDef="let row">
                     {{row.firstName}}
-                    <span class="example-spacer"></span>
-                    
+                    <span class="example-spacer"></span>  
                 </mat-cell>
             </ng-container>
             <ng-container matColumnDef="surname">
                 <mat-header-cell *matHeaderCellDef> Surname </mat-header-cell>
                 <mat-cell *matCellDef="let row">
                     {{row.surname}}
-                    <span class="example-spacer"></span>
-                    
+                    <span class="example-spacer"></span>  
                 </mat-cell>
             </ng-container>
             <ng-container matColumnDef="email">
@@ -30,12 +32,11 @@
                 <mat-cell *matCellDef="let row">
                     {{row.authorEmail}}
                     <span class="example-spacer"></span>
-                    
                 </mat-cell>
             </ng-container>
-
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
+        <!-- Paginator to allow for page view changes-->
         <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
     </div>
