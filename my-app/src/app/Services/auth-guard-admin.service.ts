@@ -13,21 +13,26 @@ export class AuthGuardAdminService implements CanActivate{
 
   constructor(private backend_service: BackendService) { }
 
+  // Auth guard service that allows only people who are part of the admins collection to use pages with this limit on
   canActivate(): Observable<boolean>
   {
+    // using isadmin method from backendservice
     return this.backend_service.isAdmin()
+    //Pipe method to stitch together rxjs operators
     .pipe(take(1))
     .pipe(map(res =>{
       if(res)
-      {
+      {//should be true
         return res.isAdmin;
       }
       else{
+        //not admin return false
         return false;
       }
     }))
     .pipe(tap(isAdmin => {
       console.log(isAdmin)
+      //is admin return true
       return true;
     }))
   }

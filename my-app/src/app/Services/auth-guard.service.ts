@@ -16,13 +16,17 @@ export class AuthGuardService implements CanActivate{
 
   constructor(public fAuth: AngularFireAuth,  private router: Router) { }
 
+  // auth service to check if user is logged in, if not they canot acces pages with this attachment
   canActivate(): Observable<boolean>
   {
+    //checks authstate
     return from(this.fAuth.authState)
+    //pip method to stitch together rxjs operators
     .pipe(take(1))
     .pipe(map(state => !!state))
     .pipe(tap(authenticated => 
       {
+        //if not logged in revert to login page
         if(!authenticated)
         {
           console.log("fail")
