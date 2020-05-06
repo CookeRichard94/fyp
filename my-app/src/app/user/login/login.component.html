@@ -2,12 +2,14 @@
 <html>
 <mat-card>
     <!-- If logged in isplay this templated-->
-    <div *ngIf="fAuth.user | async as user; else showLogin">
-        <button type="button" routerLink="/product" mat-raised-button-color="accent">Continue Shopping</button>
-        <button type="button" (click)="logout();" mat-raised-button-color="warn">Logout</button>
+    <div class="form3" *ngIf="fAuth.user | async as user; else showLogin">
+        <button class="button1" type="button" routerLink="/product" mat-raised-button-color="accent"><b>Continue Shopping</b></button>
+        <button class="button1" type="button" (click)="logout();" mat-raised-button-color="warn"><b>Logout</b></button>
     </div>
     <!--If not logged in display this template-->
+    
     <ng-template #showLogin>
+        <div class="form2">
         <mat-card-content>
             <!--Use the form to submit logi details-->
             <form #formData="ngForm" (ngSubmit)="login('email',formData.value)" class="example-form">
@@ -18,16 +20,17 @@
             <mat-error *ngIf="dataLoading">
                 <mat-progress-bar mode="indeterminate" color="primary" [value]="15"></mat-progress-bar>
             </mat-error>
-            <mat-card-actions align="start">
+            <mat-card-actions>
                 <!-- Login button disabled unless form data is valid-->
-                <button type="submit" [disabled]="!formData.valid" mat-raised-button color="primary">Log in</button>
+                <button type="submit" [disabled]="!formData.valid" mat-raised-button color="blue">Log in</button>
             </mat-card-actions>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="email" name="email" #email="ngModel" ngModel required email>
+                <input class="input" matInput placeholder="  E-mail" name="email" #email="ngModel" ngModel required email>
             </mat-form-field>
+            <br/>
             <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">Please enter a valid email.</mat-error>
             <mat-form-field class="example-full-width">
-                <input matInput type="password" placeholder="app password" name="password" #password="ngModel" ngModel required minlength="5"
+                <input matInput  class="input" type="password" placeholder=" Password" name="password" #password="ngModel" ngModel required minlength="5"
                 maxlength="30">
             </mat-form-field>
             <!--Password error possibilites-->
@@ -39,10 +42,18 @@
             </form>
         </mat-card-content>
         <!--To log in with google account-->
-        <mat-chip color="warn" selected="true" (click)="login('GOOGLE')">
-            Login With Google
-        </mat-chip>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <button class="success" selected="true" (click)="login('GOOGLE')">
+            <b>Login With Google</b>
+        </button>
         <mat-card-actions>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <mat-divider></mat-divider>
             <!-- For those going to sign up with email and password that havent registered yet-->
             <!-- Routes to signup page-->
@@ -51,6 +62,8 @@
               <strong>Create one with your email here</strong>
             </button>
           </mat-card-actions>
+          </div>
     </ng-template>
+    
 </mat-card> 
 </html>

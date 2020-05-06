@@ -41,16 +41,18 @@
 </mat-card-content>
 <!--Template for showing individual product-->
 <ng-template #showProductDetails>
-    <b>{{ myDocData.name }}</b>
-    <span class="small-spacer"></span>
     <span matTooltip="Show All Products">
         <mat-icon color="primary" (click)="toggle=!toggle">backspace</mat-icon>
     </span>
-    <br/>
-    <!-- src for the image of product displayed-->
-    <img [src]="profileUrl | async" width="300" height="300" /> 
-    <p class="label-hint" mat-line><i> {{myDocData.descr }}</i></p>
-    <p class="label-go" mat-line> <b>Price:</b> € {{myDocData.price }} </p>
+    <div class="product">
+        <span class="small-spacer"></span>
+        <b class="title">{{ myDocData.name }}</b>
+        <br/>
+        <img [src]="profileUrl | async" width="500" height="300" /> 
+        <p class="detail" mat-line> {{myDocData.descr }}</p>
+        <p class="detail" mat-line> <b>Price:</b> € {{myDocData.price }} </p>
+        <p> Free Delivery on all Orders!</p>
+    </div>
 </ng-template>
 </mat-card>
 </html>

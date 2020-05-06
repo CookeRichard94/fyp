@@ -21,25 +21,27 @@
     </mat-card-actions>
     <mat-card-content *ngIf="toggle else showProductDetails">
         <!-- Table to display a list of products-->
-        <table class="table">
-            <thead>
-                <tr class="table">
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of members | async">
-                    <td>{{item.name}}</td>
-                    <td>{{item.category}}</td>
-                    <td><b>€</b> {{item.price}}</td>
-                    <!-- Button to view a single product-->
-                    <td><button class="button" (click)="showDetails(item);toggle=!toggle">View</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr class="table">
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of members | async">
+                        <td>{{item.name}}</td>
+                        <td>{{item.category}}</td>
+                        <td><b>€</b> {{item.price}}</td>
+                        <!-- Button to view a single product-->
+                        <td><button class="button" (click)="showDetails(item);toggle=!toggle">View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
     </mat-card-content>
     <!-- Template when viewing a single product-->
@@ -48,35 +50,40 @@
             <mat-icon color="primary" (click)="toggle=!toggle">backspace</mat-icon>
         </span>
         <br>
+        <div class="product">
         <span class="small-spacer"></span>
-        <b>{{ myDocData.name }}</b>
+        <b class="title">{{ myDocData.name }}</b>
         <br/>
-        <img [src]="profileUrl | async" width="300" height="300" /> 
-        <p class="label-hint" mat-line> {{myDocData.descr }}</p>
-        <p class="label-go" mat-line> <b>Price:</b> € {{myDocData.price }} </p>
+        <img [src]="profileUrl | async" width="500" height="300" /> 
+        <p class="detail" mat-line> {{myDocData.descr }}</p>
+        <p class="detail" mat-line> <b>Price:</b> € {{myDocData.price }} </p>
+        <p> Free Delivery on all Orders!</p>
+        </div>
 
         <!-- Review page called, passing the products id and the users id-->
-        <star-review [productId]="myDocData._id" [userId]="userId"></star-review>
+        <div class="productreview">
+            <star-review [productId]="myDocData._id" [userId]="userId"></star-review>
 
-        <br>
-        <br>
+            <br>
+            <br>
 
-        <mat-error *ngIf="savedChanges">
+            <mat-error *ngIf="savedChanges">
+                <br/>
+                <br/> Item added to cart
+                <mat-icon (click)="savedChanges=!savedChanges" color="accent">close</mat-icon>
+                <span class="med-spacer"></span>
+                <br/>
+            </mat-error>
+
             <br/>
-            <br/> Item added to cart
-            <mat-icon (click)="savedChanges=!savedChanges" color="accent">close</mat-icon>
+            <!-- For adding an item to the cart-->
+            <mat-icon (click)="countProducts('remove')" color="warn">remove</mat-icon>
+            {{ counter }}
+            <mat-icon (click)="countProducts('add')" color="success">add</mat-icon>
             <span class="med-spacer"></span>
-            <br/>
-        </mat-error>
-
-        <br/>
-        <!-- For adding an item to the cart-->
-        <mat-icon (click)="countProducts('remove')" color="warn">remove</mat-icon>
-        {{ counter }}
-        <mat-icon (click)="countProducts('add')" color="success">add</mat-icon>
-        <span class="med-spacer"></span>
-        <!--Disable if the counter is less than 1-->
-        <button [disabled]="counter < 1" mat-raised-button color="accent" (click)="addToCart(myDocData, counter)">Add to Cart</button>
+            <!--Disable if the counter is less than 1-->
+            <button [disabled]="counter < 1" mat-raised-button color="accent" (click)="addToCart(myDocData, counter)">Add to Cart</button>
+        </div>
         <br/>
     </ng-template>
 </mat-card>
