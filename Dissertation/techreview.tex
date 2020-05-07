@@ -8,7 +8,7 @@ For this project it was determined that a full stack development would be prefer
     \item NodeJs for server-side purposes (Previous experience)
     \item Firebase for authentication purposes (New Technology)
     \item Firebase for database purposes (New Technology)
-    \item Heroku for application deployment (New Technology)
+    \item Firebase for application deployment (New Technology)
 \end{itemize}
 
 \section{Core Technologies} \\
@@ -38,10 +38,10 @@ For the purpose of this function Angular was chosen by the author because of the
 \end{figure}
 
 \subsubsection{Angular-CLI}
-Angular-CLI is a command line tool that used to aid in the development of an Angular based project. Through the Angular-CLI the application can be built and served and new services can be easily generated.
+Angular-CLI is a command line tool that used to aid in the development of an Angular based project. Through the Angular-CLI the application can be built and served and new services can be easily generated\cite{angcli}.
 
 \subsubsection{Typescript}
-Typescript is a superset of the programming language Javascript.It is compiled as javascript, which essentially makes it javascript plus additional features. Developers with experience of javascript will easily be able to adapt to using typescript when developing a web-application.  
+Typescript is a superset of the programming language Javascript.It is compiled as javascript, which essentially makes it javascript plus additional features. Developers with experience of javascript will easily be able to adapt to using typescript when developing a web-application\cite{tsdocs}.  
 
 \begin{figure}[h!]
 	\caption{Example of a function written in typescript}
@@ -85,7 +85,7 @@ NodeJs allows developers to make use of extra packages called Node Modules or NP
 There are both advantages and disadvantages to using NodeJs\cite{advdis2}: \\
 
 \subsubsection{Javascript}
-Javascript is a programming language responsible for the functionality of web-pages. The javascript of a web-page allows for communication with the sever side of the application. In the case of this project, and many Angular based projects, typescript is used, which is a subset of javascript.
+Javascript is a programming language responsible for the functionality of web-pages. The javascript of a web-page allows for communication with the sever side of the application. In the case of this project, and many Angular based projects, typescript is used, which is a subset of javascript\cite{jsdocs}.
 
 \subsubsection{Advatanges of NodeJs}
 \begin{itemize}
@@ -110,6 +110,7 @@ Within this project Firebase was used as both a database and for user authentica
 \paragraph{}
 Firebase was also used for user authentication purposes throughout the project. Firebase provides many SDKs and back end services that allow for user verification in a multitude of ways. Users can opt for sign in through social platforms such as Facebook or Twitter, standard E-mail and Password registration or through a Google(G-mail) account. In the case of this project the author has utilized the Google and E-mail/Password authentication \cite{fireauth}. When a user has been authenticated they will be granted an access token which will be attached to a unique id and either their email or the id of their social platform \\
 
+\newpage
 \begin{figure}[h!]
     	\caption{How Firebase Authentication Works}
 	\centering
@@ -117,8 +118,10 @@ Firebase was also used for user authentication purposes throughout the project. 
 \end{figure}
 \\
 
-\paragraph{}
-Firebase also provides a variety of other products such as hosting of applications, however in the case of this project the author opted to use a different new technology for deployment and hosting of the web-application as it was determined by the author that it would be better for the project scope to explore new technologies and not become to reliant on a single technology when it was not required to do so. 
+\subsubsection{Firebase Deployment}
+Firebase also provides a variety of other products such as hosting of applications, in the case of this project firebase deployment was used for a number of reasons, the first of which was that because of the uniqueness of the Firebase connections were no back end server needs to be established this limited the use of some other deployment platforms such as Heroku, I found this to be a considerable disadvantage to using a Firebase constructed database. Aside from this, the deployment of an application to Firebase cloud servers was found to be a much simpler process than other deployment methods. In the case of Firebase, all that is required is to login to the developers Firebase account, use the command "firebase init" in the command line, check off a series of options and then to use the command "firebase deploy" \cite{firedeploy} where upon the developer is presented with the URL which their application is now being hosted on. All in all the deployment process for this application, where Firebase was concerned was less than 5 minutes. \\
+
+A fully deployed version of the web-application is available on: https://fyp-server-75156.web.app/ \\
 
 \subsubsection{Security}
 Although a portion of the security related to Firebase was outlined when discussing Firebase user authentication, Firebase provides additional security in its database environment. Within Firebase the developer of a web-application using the database service can establish a set of "rules" to determine which users, if any, can access, read, write, edit or delete data. 
@@ -128,6 +131,8 @@ Although a portion of the security related to Firebase was outlined when discuss
 	\includegraphics[width=0.9\textwidth]{images/fbrules.png}
 \end{figure}
 
+\newpage
+
 \subsubsection{JSON}
 JSON, or Javascript-Object-Notation, is a lightweight format for storing and transporting data. JSON is text-based, making it readable by both human and machine. JSON is used by Firebase to store data for a number of reasons, it is easy for humans to read and write, it is language independent meaning it can be accessed by a number of programming languages and it supports many different data types\cite{inproceedings}. 
 
@@ -136,7 +141,7 @@ JSON, or Javascript-Object-Notation, is a lightweight format for storing and tra
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/jsonfb.png}
 \end{figure} 
-\newpage
+
 There are Advantages and Disadvantages to using Firebase\cite{advdis3}: \\
 
 \subsubsection{Advantages of Firebase}\\
@@ -172,8 +177,10 @@ LaTeX is a markup language similar to HTML. The use of LaTeX to construct this p
 	\includegraphics[width=0.9\textwidth]{images/latex.png}
 \end{figure}
 
+\newpage
+
 \subsection{Heroku}
-Heroku is a Platform as a Service (PaaS), used for the deployment of web-applications to a cloud platform. To perform this deployment all that is needed is a Heroku account and a Github profile. When pushed Heroku a URL is produced that allows universal access to the application. Heroku allows for the deployment of almost any type of application and for those that are not supported build packages are available to make the application deployable. 
+Heroku is a Platform as a Service (PaaS), used for the deployment of web-applications to a cloud platform. In the case of this project Heroku was originally intended to be used for the deployment of the web-application however during the research phase on Heroku it was discovered that a Heroku deployed application would need a back end serve meaning Heroku could not be used in conjunction with firebase as firebase eliminates the need for the presence of a backend server.
 
 
 

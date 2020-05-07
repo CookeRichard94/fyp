@@ -1,2 +1,58 @@
 \chapter{System Evaluation}
-Blah......
+This chapter will outline what methods for testing the functionality of the web-application took place. It will also examine whether the earlier outlined requirements of the application were met or not and will discuss the limitations of the technologies used. 
+
+\section{Testing}
+Testing of the web-application was performed in a number of ways. Throughout the development cycle of the applied project Test Driven Development was implemented, this means that before a new unit of code was started the preceding unit was developed into a fully functioning state via testing, this was done so as to stop a build up of bugs and when being paired with the Extreme Programming methodology adapted early on allowed for most of the core functionalities outlined to be integrated without impacting the application in a negative way. 
+
+\subsection{Usability Testing}
+In this case the testing was carried out in 3 stages. In the first stage, fellow participants in the course were able to use completely local version of the project that had limited functionality. This stage of testing was to ascertain that the web-application had the desired feel of an expected e-commerce application.\\
+In the next stage of usability testing, students in the module were given a version of the project that had a working connection to the Firebase database along with most basic functionality associated with the web-application. This stage of testing was done for more feedback of the applications feel and to catch any bugs. It was at this stage that a student reported a bug in the search products function. \\
+The final stage of usability testing was to have these same students access the deployed web-application and to provide general feedback. These tests were carried out by students only.
+
+\subsection{Integration Testing}
+In the case of this project integration was carried out at the completion of each unit of work. When the functionality had been developed to a level deemed working it was integrated into the system to see what impact it had on the system as a whole or on any previously integrated components of the application. These tests were carried out by the developer only.
+
+\subsection{Compatibility Testing}
+In the case of this project compatibility testing was conducted by deploying the application onto multiple different browsers and to different Operating System environments. These tests were conducted by both the developer and other students. The browsers using in this testing phase were:
+
+\begin{itemize}
+    \item Google Chrome (The main test base)
+    \item Mozilla Firefox
+    \item Microsoft Edge
+\end{itemize}
+
+The Operating System environments that were used in this testing phase were:
+
+\begin{itemize}
+    \item Windows 10
+    \item Windows 8
+    \item Manjaro
+\end{itemize}
+
+The application deployment was also tested on mobile browsers and deployed successfully, however because it had not been configured to adapt to the screens of these devices the placement of the UI was not ideal.
+
+\subsection{Acceptance Testing}
+This testing was conducted at the same time as the third stage of Usability testing and was to ascertain whether the application met the standards expected of an e-commerce application and was determined by the feedback provided by the student involved.
+
+\newpage
+
+\section{Limitations}
+One of the key limitations uncovered in within this project was that of the compatibility of Firebase with some deployment sites. The original plan when intending to develop this application was to use Firebase for authentication and for database storage and to use heroku as a means to host the application on a cloub platform. However, this changed late into the development cycle when attempting to deploy an angular firebase based application to heroku numerous problems where encountered and with a lack of documentation relating to pushing an application of this type without a back end server as is not used in firebase databases the original plan was abandoned. Luckily, this situation was resolved as firebase had its own deployment and hosting service which was free. However, this lack of cooperation between a firebase database and other platforms is something that should be classified as a limitation of the technology. On the limitations of the applications, it was never tested to a breaking point with automated testing where 100's of requests would be sent through the application ever few seconds, it did receive a minor stress test were the author and 7 fellow student spammed requests towards the applications database and it experienced no falter as would be expected.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
