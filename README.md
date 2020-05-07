@@ -3,10 +3,10 @@
 |---|---|---|---|---|
 | Richard Cooke  | G00331787  | Applied Project & Minor Dissertation  | Mr. Gerard Harrison  | Dr. John Healy |
 
-This project was developed as part of the 15 credit module, Applied Project and Minore Disertation taught at Galway-Mayo Institute of Technology as part of the 4th year programme of the Computing in Software Development. The application developed for this module is an e-commerce appliction developed Using Angular framework, NodeJs and Firebase technologies. The application allows users to register and login and have their login sessions be consistent. Update their user information. View, review and add & remove products from their cart. Non logged in users are restricted from these features using an auth guard service. An Admin auth guard service is in place to prevent users accessing Administrator privleges which include adding, editing and removing products from the application. Viewing a list of the applications authenticated users and uploading and removing images to be associated with products.  
+This project was developed as part of the 15 credit module, Applied Project and Minor Dissertation taught at Galway-Mayo Institute of Technology as part of the 4th year  of the Computing in Software Development. The application developed for this module is an e-commerce application developed Using Angular framework, NodeJs and Firebase technologies. The application allows users to register and login and have their login sessions be consistent. Update their user information. View, review and add & remove products from their cart. Non logged in users are restricted from these features using an auth guard service. An Admin auth guard service is in place to prevent users accessing Administrator privileges which include adding, editing and removing products from the application. Viewing a list of the applications authenticated users and uploading and removing images to be associated with products.  
 
 # Environment
-* Angular vsersion: 9.0.0
+* Angular version: 9.0.0
 * NodeJs version: 12.16.3 at least
 
 # How to Run
