@@ -1,5 +1,5 @@
 \chapter{System Design}
-In this chapter we will discuss the design and architecture of the web-applications system and how the aforementioned technologies are integrated throughout the web-application. Typically in the case of a web-application such as the one defined within this paper, three-tier architecture would be employed as a means to operate the system. However, because Firebase is a backend-as-a-service, technically that would making the architecture of this project 2-tier. However, the two-tier architecture of a Firebase web-application such as this uses pseudo servers, by using imports of angularfire modules, giving the same core functionality as an application with 3-tier architecture. 
+In this chapter we will discuss the design and architecture of the web-applications system and how the aforementioned technologies are integrated throughout the web-application. Typically in the case of a web-application such as the one defined within this paper, three-tier architecture would be employed as a means to operate the system. However, because Firebase is a backend-as-a-service, technically that would making the architecture of this project 2-tier. However, the two-tier architecture of a Firebase web-application such as this uses pseudo servers, by using imports of AngularFire modules, giving the same core functionality as an application with 3-tier architecture. 
 
 \section{Overview}
 To describe this application in terms of a 3-tier architecture application, the Angular side of operations would wholly conclude the presentation layer, both Angular and Firebase are used to create the "Logic" layer which is conducted by using packages available from the NPM of NodeJs and the Data layer is solely controlled using Firebase technologies. The Angular component passes a request to the backendservice.ts file, which using both Angular and Firebase imports connects with the database and process the request before passing the new data back to the backendservice.ts file to pass on the relevant Angular component.
@@ -45,7 +45,7 @@ After completing the login or registering as a new user, a standard user has acc
 \end{figure}
 
 \newpage
-The about component is a simple HTML page, it features no back end functionality and is in place only to inform those that are not aware of the purpose of the web-application or for those interested in seeing which technologies were used in the creation of the web-application. The page consists of a small paragraph about the application and its developer and a series of links to the technologies used and the the github repository of the project. 
+The about component is a simple HTML page, it features no back end functionality and is in place only to inform those that are not aware of the purpose of the web-application or for those interested in seeing which technologies were used in the creation of the web-application. The page consists of a small paragraph about the application and its developer and a series of links to the technologies used and the the Github repository of the project. 
 
 \\ \\
 The user information page contains an angular material form that has four input fields (First name, surname, address and age). The first three inputs are given string values and the age field is given a number value. When these fields are correctly filled, the submit button which was initially disabled becomes ready for use. When the submit button is followed the information in the fields of the form, along with the email of the current user and the unique id assigned to the user is sent to the Firebase database as part of a collection of users. Also present on the user information page is a logout button that allows for the current user to be logged out if it is selected, the user is then routed back to the login page.
@@ -188,11 +188,12 @@ The functionality of using the review system is similar to creating a relationsh
 
 
 \subsubsection{Upload Image Functionality}
-Like the Star Review page, the upload page is called as an inner page, this time as part of the set products page to be handled by the administrator. The upload page takes two parameters, the path of the file or image being uploaded and the id of the document this path is to be added to. Most of the functionality considered with file upload is adapted from the angular 2 handbook, which is referenced within the filesize.pipe.ts file which is used to handle the mathematics involved in file upload. The image upload occurs within the set product as one of the actions the administrator can take when creating or editing a product. When a product does not have an attached image the photo-reel icon is blacked out. After an image has been attached the blacked out image-reel is replaced with two icons a camera icon for viewing the uploaded image and a differently coloured photo-reel icon that when followed, removes the attached image of the specified document.
+Like the Star Review page, the upload page is called as an inner page, this time as part of the set products page to be handled by the administrator. The upload page takes two parameters, the path of the file or image being uploaded and the id of the document this path is to be added to. Most of the functionality considered with file upload is adapted from the angular 2 handbook, which is referenced within the filesize.pipe.ts file which is used to handle the mathematics involved in file upload.\\ 
+The image upload occurs within the set product as one of the actions the administrator can take when creating or editing a product. When a product does not have an attached image the photo-reel icon is blacked out. After an image has been attached the blacked out image-reel is replaced with two icons a camera icon for viewing the uploaded image and a differently coloured photo-reel icon that when followed, removes the attached image of the specified document.
 
 \begin{figure}[h!]
-    \caption{Top: After an image is uploaded,
-    Bottom: Before an image is uploaded.}
+    \caption{Top: After an image is uploaded,\\
+             Bottom: Before an image is uploaded.}
 	\centering
 	\includegraphics[width=10cm, height=4cm]{images/photoupload.png}
 \end{figure}

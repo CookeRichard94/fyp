@@ -5,7 +5,7 @@ This chapter will focus on the technical aspects of the projects by reviewing th
 For this project it was determined that a full stack development would be preferred, with this in mind it was important to determine what technologies would be suitable for a project such as this and which of these technologies would be most compatible with one another. Prior to taking on this project, the author had had experience using the MEAN stack in one previous module, the MEAN stack is an acronym for the use of the technologies MongoDB, Express, Angular and NodeJs. As previously mentioned, the author wished to use this project to both learn of new technologies and to polish up on some previously exercised technologies. For this purpose the stack used in the development of this project was as follows: \\
 \begin{itemize}
     \item Angular for front end purposes (Previous experience)
-    \item NodeJs for server-side purposes (Previous experience)
+    \item Node for server-like purposes, through Node Modules (Previous experience)
     \item Firebase for authentication purposes (New Technology)
     \item Firebase for database purposes (New Technology)
     \item Firebase for application deployment (New Technology)
@@ -70,12 +70,12 @@ There are both advantages and disadvantages to using Angular framework: \cite{ad
 \end{itemize}
 
 \subsection{NodeJs} \\
-NodeJs is a cross-platform javascript run-time environment that allows for javascript to run outside of a browser. NodeJs features built in HTTP functionality, this allows a developer to utilize this HTTP functionality in a local environment wherein usually this would not be possible \cite{nodejs}. In the case of this project NodeJs is used for server-side purposes, meaning that the server-side and the front-end of the project both function using javascript which allows for a minimization of needed maintenance of the components of the project. \\ 
-The reason NodeJs was used as a par of this project was that the author had previous experience with the technology and because of it's known compatibility with the Angular framework. Due to this easily maintained relationship with Angular, this offered more time to be attributed to exploring the new technologies being introduced to the author. Although the author has previous working experience with NodeJs, the environment on this occasion did not have NodeJs working in conjunction with Express as had been previously done. \\
-
+NodeJs is a cross-platform javascript run-time environment that allows for javascript to run outside of a browser. NodeJs features built in HTTP functionality, this allows a developer to utilize this HTTP functionality in a local environment wherein usually this would not be possible \cite{nodejs}. In the case of this project NodeJs is used for pseudo-server-side purposes, wherein node packages such as AngularFire allow for the communication between an Angular application and a Firebase database. \\ 
+The reason NodeJs was used as a par of this project was that the author had previous experience with the technology and because of it's known compatibility with the Angular framework. Due to this easily maintained relationship with Angular, this offered more time to be attributed to exploring the new technologies being introduced to the author. Although the author has previous working experience with NodeJs, the environment on this occasion did not have NodeJs working in conjunction with Express as had been previously done where the two would compile to build a localized server as this functionality is not required when working with a Firebase database as the NPM package AngularFire allows middle-ware to be replace with a service acting as a back end\cite{angfire}. \\
+\n
 \subsubsection{Node Modules} \\ 
-NodeJs allows developers to make use of extra packages called Node Modules or NPMs. These packages usually provide extra functionality to an application, these packages provide a range of different functionality such as streamlined server connection and user authentication \cite{npm}. Throughout the development of this project NPM was used for providing server side connection to firebase and for the control of Angular modules and materials.
-
+NodeJs allows developers to make use of extra packages called Node Modules or NPMs. These packages usually provide extra functionality to an application, these packages provide a range of different functionality such as streamlined server connection and user authentication \cite{npm}. Throughout the development of this project NPM was used for providing server side connection to Firebase and for the control of Angular modules and materials.
+\newpage
 \begin{figure}[h!]
     	\caption{Popular NPM packages}
 	\centering
@@ -90,6 +90,7 @@ Javascript is a programming language responsible for the functionality of web-pa
 \subsubsection{Advatanges of NodeJs}
 \begin{itemize}
     \item Easily Scalable. NodeJs can be used to scale an application either vertically or horizontally if needed. Single nodes within the server can make use of different resources which is not always available on javascript servers.
+    \newpage
     \item Single Programming Language. Javascript is currently renowned as the most popular programming language in the world, as such, the fact that NodeJs can be completely run in javascript makes it a highly accessible server. The single use of javascript also makes NodeJs highly compatible with most web-application frameworks as the front-end functionality of these application is most commonly written using javascript as these applications are built to run on web browsers and most web browsers support javascript.
 \end{itemize}
 
@@ -107,8 +108,9 @@ Within this project Firebase was used as both a database and for user authentica
 	\includegraphics[width=0.9\textwidth]{images/firebase.png}
 \end{figure}
 
+\newpage
 \paragraph{}
-Firebase was also used for user authentication purposes throughout the project. Firebase provides many SDKs and back end services that allow for user verification in a multitude of ways. Users can opt for sign in through social platforms such as Facebook or Twitter, standard E-mail and Password registration or through a Google(G-mail) account. In the case of this project the author has utilized the Google and E-mail/Password authentication \cite{fireauth}. When a user has been authenticated they will be granted an access token which will be attached to a unique id and either their email or the id of their social platform \\
+Firebase was also used for user authentication purposes throughout the project. Firebase provides many SDKs and back end services that allow for user verification in a multitude of ways. Users can opt for sign in through social platforms such as Facebook or Twitter, standard E-mail and Password registration or through a Google(G-mail) account. In the case of this project the author has utilized the Google and E-mail/Password authentication \cite{fireauth}. When a user has been authenticated they will be granted an access token which will be attached to a unique id, generated by Firebase, along with either their email or the id of their social platform profile. \\
 
 \newpage
 \begin{figure}[h!]
@@ -119,7 +121,7 @@ Firebase was also used for user authentication purposes throughout the project. 
 \\
 
 \subsubsection{Firebase Deployment}
-Firebase also provides a variety of other products such as hosting of applications, in the case of this project firebase deployment was used for a number of reasons, the first of which was that because of the uniqueness of the Firebase connections were no back end server needs to be established this limited the use of some other deployment platforms such as Heroku, I found this to be a considerable disadvantage to using a Firebase constructed database. Aside from this, the deployment of an application to Firebase cloud servers was found to be a much simpler process than other deployment methods. In the case of Firebase, all that is required is to login to the developers Firebase account, use the command "firebase init" in the command line, check off a series of options and then to use the command "firebase deploy" \cite{firedeploy} where upon the developer is presented with the URL which their application is now being hosted on. All in all the deployment process for this application, where Firebase was concerned was less than 5 minutes. \\
+Firebase also provides a variety of other products such as hosting of applications, in the case of this project Firebase deployment was used for a number of reasons, the first of which was that because of the uniqueness of the Firebase connections were no back end server needs to be established this limited the use of some other deployment platforms such as Heroku, I found this to be a considerable disadvantage to using a Firebase constructed database. Aside from this, the deployment of an application to Firebase cloud servers was found to be a much simpler process than other deployment methods. In the case of Firebase, all that is required is to login to the developers Firebase account, use the command "firebase init" in the command line, check off a series of options and then to use the command "firebase deploy" \cite{firedeploy} where upon the developer is presented with the URL which their application is now being hosted on. All in all the deployment process for this application, where Firebase was concerned was less than 5 minutes. \\
 
 A fully deployed version of the web-application is available on: https://fyp-server-75156.web.app/ \\
 
@@ -180,7 +182,7 @@ LaTeX is a markup language similar to HTML. The use of LaTeX to construct this p
 \newpage
 
 \subsection{Heroku}
-Heroku is a Platform as a Service (PaaS), used for the deployment of web-applications to a cloud platform. In the case of this project Heroku was originally intended to be used for the deployment of the web-application however during the research phase on Heroku it was discovered that a Heroku deployed application would need a back end serve meaning Heroku could not be used in conjunction with firebase as firebase eliminates the need for the presence of a backend server.
+Heroku is a Platform as a Service (PaaS), used for the deployment of web-applications to a cloud platform. In the case of this project Heroku was originally intended to be used for the deployment of the web-application however during the research phase on Heroku it was discovered that a Heroku deployed application would need a back end serve meaning Heroku could not be used in conjunction with Firebase as Firebase eliminates the need for the presence of a back end server.
 
 
 
